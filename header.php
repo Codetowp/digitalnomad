@@ -11,46 +11,95 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
+<!-- Basic Page Needs
+    ================================================== -->
+<meta charset="utf-8">
+<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numero-nomad</title>
+<meta name="description" content="">
+<meta name="author" content="">
 
-	<?php wp_head(); ?>
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="#" type="image/x-icon">
+    
+<?php wp_head(); ?> 
+
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'digitalnomad' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'digitalnomad' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
+<body>
+<header id="menutop"> 
+  
+  <!-- Navigation
+    ==========================================-->
+  <nav id="top-menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+       
+             <?php  
+                $custom_logo = get_theme_mod( 'custom_logo' );
+                $logo = wp_get_attachment_image_src( $custom_logo , 'full' );
+                $logo_img_static   = get_template_directory_uri()."";
+                
+                if ( has_custom_logo() ) 
+                {
+                    $img='<img src="'. esc_url( $logo[0] ) .'" >';
+                } 
+                else 
+                {
+                    $img='<img src="'.$logo_img_static.'" >';
+                }
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+            
+            
+            
+         <a class="navbar-brand" href="index.html">    
+            <?php echo $img; ?>  <?php echo bloginfo( 'name' ); ?><span><?php echo GET_OPTION('blogdescription'); ?></span>
+        </a> </div>
+      <!--search icon-->
+       <a class="search-up pull-right"><i class="fa fa-search"></i></a> 
+      
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       
+        
+        	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
+            <?php
+				wp_nav_menu( array( 
+                        'theme_location'    => 'menu-1', 
+                        'menu_class'        => 'nav navbar-nav navbar-right' ) );
+            ?>
+            <?php else : ?>
+				<li ><a  href=" <?php echo esc_url(admin_url( 'nav-menus.php' ));?>  "><?php echo __( 'Add a Primary Menu', 'digitalnomad' );?>  </a></li>
+			<?php endif; ?>
 
-	<div id="content" class="site-content">
+      </div>
+      <!-- /.navbar-collapse --> 
+     </div>
+    <!-- /.container-fluid --> 
+    
+  </nav>
+  <div class="clearfix"></div>
+  <!-- search-block -->
+  <div class="search-block" style="">
+   <a class="search-up pull-right"><i class="fa fa-close"></i></a> 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          
+            <form id="search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get"> 
+
+                <input type="text"  placeholder="<?php echo esc_attr_x( 'Search...&hellip;', 'placeholder', 'digitalnomad' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" size="40"/>
+            </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- /search-block --> 
+</header>
