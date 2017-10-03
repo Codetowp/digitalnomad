@@ -16,6 +16,10 @@ function digitalnomad_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
     
     $wp_customize->get_section('title_tagline')->title = __( 'Branding' ); 
+        
+    require get_template_directory() . '/inc/customizer-controls.php';
+	require get_template_directory() . '/inc/lib/fo-to-range.php';
+
 
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -27,7 +31,156 @@ function digitalnomad_customize_register( $wp_customize ) {
 			'selector'        => '.site-description',
 			'render_callback' => 'digitalnomad_customize_partial_blogdescription',
 		) );
+        
+        $wp_customize->selective_refresh->add_partial( 'digitalnomad_header_text', array(
+            'selector'       	 	=> '#home-banner h1',
+            'render_callback' 	 	=> 'digitalnomad_customize_partial_header_text',
+
+        ) ); 
+        
+        $wp_customize->selective_refresh->add_partial( 'digitalnomad_header_tag_line', array(
+            'selector'       	 	=> '#home-banner span',
+            'render_callback' 	 	=> 'digitalnomad_customize_partial_header_tag_line',
+
+        ) ); 
+        
+     
+        
 	}
+    
+/*****************************Panel***********************************************/
+    
+		$wp_customize->add_panel( 'digitalnomad_pannel' ,array(
+            'priority'        		=> 101,
+            'title'           		=> esc_html__( 'Frontpage Theme Sections', 'digitalnomad' ),
+            'description'     		=> '',
+        ) );
+    
+/********* header intro **********/
+    
+        $wp_customize->add_section('digitalnomad_header', array(
+            'title'                     => __('Header Intro', 'digitalnomad'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 15,   
+            'panel'                     => 'digitalnomad_pannel',    
+
+        ));
+    
+        /********* header Disable **********/
+    
+        $wp_customize->add_setting( 'digitalnomad_disable', array(
+                'sanitize_callback' => 'digitalnomad_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'digitalnomad_disable', array(
+                'settings' => 'digitalnomad_disable',
+                'label'    => __( 'Disable Header Section?', 'digitalnomad' ),
+                'section'  => 'digitalnomad_header',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+
+    
+       
+        $wp_customize->add_setting( 'header_background_image', array(
+            'default'                   => '',
+            'type'                      => 'theme_mod',
+            'capability'                => 'edit_theme_options',
+            'sanitize_callback'         => 'esc_url_raw',
+        ) );
+    
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,'header_background_image', array(
+            'label'                     => __( 'Background Image', '' ),
+            'section'                   => 'digitalnomad_header',
+            'settings'                  => 'header_background_image',
+            'context'                   => 'header_background_image',
+            'priority'                  => 20,
+            ) 
+        ) );
+    
+        $wp_customize->add_setting( 'digitalnomad_header_text', array(      
+            'default'                   => esc_html__('Section Main Title', 'digitalnomad'),
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'digitalnomad_header_text', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Header', 'digitalnomad' ),
+            'section'  					=> 'digitalnomad_header',
+            'priority' 					=> 1,
+        ) );
+    
+        
+        $wp_customize->add_setting( 'digitalnomad_header_tag_line', array(      
+            'default'                   => esc_html__('Section Title', 'digitalnomad'),
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'postMessage', // refresh or postMessage              
+        ) );    
+
+        $wp_customize->add_control( 'digitalnomad_header_tag_line', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Tag line', 'digitalnomad' ),
+            'section'  					=> 'digitalnomad_header',
+            'priority' 					=> 2,
+        ) );
+    
+    
+        $wp_customize->add_setting( 'digitalnomad_header_button_text', array(      
+            'default'                   => 'contact us' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'digitalnomad_header_button_text', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Text', 'digitalnomad' ),
+            'section'  					=> 'digitalnomad_header',
+            'priority' 					=> 4,
+        ) );	
+   
+        $wp_customize->add_setting( 'digitalnomad_header_button_url', array(      
+            'default'                   => '#' ,
+            'sanitize_callback'         => 'sanitize_text_field',
+            'transport'                 => 'refresh',               
+        ) );    
+
+        $wp_customize->add_control( 'digitalnomad_header_button_url', array(
+            'type'						=> 'text',
+            'label' 					=> __( 'Button Url', 'digitalnomad' ),
+            'section'  					=> 'digitalnomad_header',
+            'priority' 					=> 5
+        ) );	  
+    
+
+       $social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
+
+		foreach( $social_sites as $social_site ) 
+        {
+                $wp_customize->add_setting( "social[$social_site]", array(
+                'default'           => '',
+                'type'              => 'theme_mod',
+                'capability'        => 'edit_theme_options',
+                'sanitize_callback' => 'esc_url_raw'
+            ) );
+
+                $wp_customize->add_control( "social[$social_site]", array(
+                'label'            => ucwords( $social_site ) . __( " Url:", 'digitalnomad' ),
+                'section'          => 'digitalnomad_header',
+                'type'             => 'text',
+                'priority' 		   => 20,
+            ) );
+		}
+    
+    
+    
 }
 add_action( 'customize_register', 'digitalnomad_customize_register' );
 
@@ -40,14 +193,19 @@ function digitalnomad_customize_partial_blogname() {
 	bloginfo( 'name' );
 }
 
+function digitalnomad_customize_partial_header_text() {
+    echo get_theme_mod('digitalnomad_header_text');
+}
+
+function digitalnomad_customize_partial_header_tag_line() {
+    echo get_theme_mod('digitalnomad_header_tag_line');
+}
+
 /**
  * Render the site tagline for the selective refresh partial.
  *
  * @return void
  */
-function digitalnomad_customize_partial_blogdescription() {
-	bloginfo( 'description' );
-}
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.

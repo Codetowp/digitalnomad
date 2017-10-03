@@ -41,6 +41,13 @@ if ( ! function_exists( 'digitalnomad_posted_on' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'digitalnomad_is_selective_refresh' ) ) {
+    function digitalnomad_is_selective_refresh()
+    {
+        return isset($GLOBALS['digitalnomad_is_selective_refresh']) && $GLOBALS['digitalnomad_is_selective_refresh'] ? true : false;
+    }
+}
+
 if ( ! function_exists( 'digitalnomad_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.

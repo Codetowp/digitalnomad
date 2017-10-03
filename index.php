@@ -14,34 +14,66 @@
 
 get_header(); ?>
 
+<?php
+    $background_img   = esc_url( get_theme_mod( 'header_background_image' ) );   
+    $background_img_static   = get_template_directory_uri()."/img/bg-1.jpg";
+    $image = $background_img ? "$background_img" : "$background_img_static";   
+ 
+    $disable    = get_theme_mod( 'digitalnomad_disable' ) == 1 ? true : false ;
+        if ( digitalnomad_is_selective_refresh() ) 
+        {
+            $disable = false;
+        }
+        if ( ! $disable) :
+?>
+
 <!--Home banner-->
-<section id="home-banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-1.jpg);" class="half-height">
+<section id="home-banner" style="background-image: url(<?php echo $image;?>);" class="half-height">
   <div class="content">
     <div class="container wow fdeInUp"  data-wow-duration="1s">
       <div class="row">
         <div class="col-md-6 col-md-offset-3"> 
           <!--Head content--> 
-          <span>HEY I’M RIJO ABRAHAM</span>
-          <h1>DIGITAL NOMAD </h1>
+          <?php 
+                $nomad_tagline  = get_theme_mod( 'digitalnomad_header_tag_line', esc_html__(' HEY I’M RIJO ABRAHAM', 'digitalnomad' ));
+                if ($nomad_tagline != '') echo '<span>  ' . wp_kses_post($nomad_tagline) . ' </span>'; 
+            ?>
+          
+            <?php 
+                $nomad_theme_title  = get_theme_mod( 'digitalnomad_header_text', esc_html__(' DIGITAL NOMAD', 'digitalnomad' ));
+                if ($nomad_theme_title != '') echo '<h1>  ' . wp_kses_post($nomad_theme_title) . ' </h1>'; 
+            ?> 
+
           <!--/Head content--> 
           
           <!--Head social-->
           <ul class="head-social-link">
-            <li> <a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li> <a href="#"><i class="fa fa-rss"></i></a></li>
-            <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li> <a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-            <li> <a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-            <li> <a href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li> <a href="#"><i class="fa fa-behance"></i></a></li>
+                            <?php
+                 if ( $socials = get_theme_mod( 'social' ) ) 
+                    {
+                        $socials = $socials ? array_filter( $socials ) : array();
+                        foreach ( $socials as $social => $name ) 
+                        {
+                                printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), $social );
+                        }
+                    }?>
+                  
           </ul>
           <!--/Head social--> 
           
-          <a href="#" class="btn-white btn" >Hire me</a> </div>
+          <a href="<?php echo  $button1_url=( get_theme_mod( 'digitalnomad_header_button_url' ) )?
+                ( get_theme_mod( 'digitalnomad_header_button_url' ) ):'#'; ?>" class="btn-white btn" >
+              
+              <?php echo  $button_text=( get_theme_mod( 'digitalnomad_header_button_text' ) )?
+                ( get_theme_mod( 'digitalnomad_header_button_text' ) ):'Hire me'; ?>
+           </a> 
+          </div>
       </div>
     </div>
   </div>
 </section>
+<?php endif;?>
+
 <!--/Home banner--> 
 
 <!--Home content-->
