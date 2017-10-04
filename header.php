@@ -59,7 +59,7 @@
             
             
          <a class="navbar-brand" href="index.html">    
-            <?php echo $img; ?>  <?php echo bloginfo( 'name' ); ?><span><?php echo GET_OPTION('blogdescription'); ?></span>
+            <?php echo $img; ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo GET_OPTION('blogdescription'); ?></span>
         </a> </div>
       <!--search icon-->
        <a class="search-up pull-right"><i class="fa fa-search"></i></a> 

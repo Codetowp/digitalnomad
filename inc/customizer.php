@@ -178,6 +178,32 @@ function digitalnomad_customize_register( $wp_customize ) {
                 'priority' 		   => 20,
             ) );
 		}
+
+
+/*********Blog Section**********/
+    
+        $wp_customize->add_section('digitalnomad_blog_section', array(
+            'title'                     => __('Blog Section', 'digitalnomad'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 50,   
+            'panel'                     => 'digitalnomad_pannel',    
+
+        ));
+    
+    
+        $wp_customize->add_setting( 'digitalnomad_blog_section_count', array(
+            'default'                   => esc_html__('3','digitalnomad'),
+            'sanitize_callback'         => 'numero_sanitize_integer'
+            )
+        );
+         $wp_customize->add_control( 'digitalnomad_blog_section_count', array(
+            'type'                      => 'integer',
+            'label'                     => __('Number Of Blog To Show - i.e 10 (default is 3)','digitalnomad'),
+            'section'                   => 'digitalnomad_blog_section',
+
+            )
+        );
+    
     
     
     

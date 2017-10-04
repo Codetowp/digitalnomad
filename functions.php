@@ -46,6 +46,10 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'numero' ),
 		) );
+        
+        register_nav_menus( array(
+			'footer-menu' => esc_html__( 'Footer', 'numero' ),
+		) );
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -109,8 +113,23 @@ function digitalnomad_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    
+   register_sidebar( 
+    array(
+        'name'          => esc_html__( 'Social', 'digitalnomad' ),
+        'id'            => 'social',
+        'description'   => esc_html__( 'Add widgets here.', 'digitalnomad' ),
+        'before_widget' => '<ul>',
+        'after_widget'  => '</ul>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+    require get_template_directory() . '/inc/widget/social.php';  
 }
+
 add_action( 'widgets_init', 'digitalnomad_widgets_init' );
+
+
 
 /**
  * Enqueue scripts and styles.

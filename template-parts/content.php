@@ -4,51 +4,30 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Digital_Nomad
+ * @package numero
  */
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
 
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php digitalnomad_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
-		<?php
-			the_content( sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'digitalnomad' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			) );
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'digitalnomad' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php digitalnomad_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+<article>
+    <header class="entry-header">
+        <div class="col-md-6">
+             <?php
+                if  ( get_the_post_thumbnail()!='')
+                {
+                    the_post_thumbnail('digitalnomad_blog_section'); 
+                }
+                else
+                {   ?>
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/05-screenshot.jpg">
+                    <?php 
+                }   ?>
+        </div>
+        <div class="home-article-content col-md-6"> <span class="tag-details"><a href="<?php the_permalink();?>">Fashion</a> . <span class="date-article"><?php digitalnomad_posted_on(); ?></span></span>
+            <h2><?php the_title();?></h2>
+            <span class="byline"> By <span class="author vcard"><a href="#">Allie Kingsley</a></span></span>
+            <p><?php the_excerpt(); ?><a href="#">Read more</a> </p>
+        </div>
+    </header>
+</article>
