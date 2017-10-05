@@ -42,11 +42,14 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'digitalnomad' ),
+			'menu-1' => esc_html__( 'Primary', 'numero' ),
 		) );
-
+        
+        register_nav_menus( array(
+			'footer-menu' => esc_html__( 'Footer', 'numero' ),
+		) );
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -110,13 +113,61 @@ function digitalnomad_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    
+   register_sidebar( 
+    array(
+        'name'          => esc_html__( 'Social', 'digitalnomad' ),
+        'id'            => 'social',
+        'description'   => esc_html__( 'Add widgets here.', 'digitalnomad' ),
+        'before_widget' => '<ul>',
+        'after_widget'  => '</ul>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+    require get_template_directory() . '/inc/widget/social.php';  
 }
+
 add_action( 'widgets_init', 'digitalnomad_widgets_init' );
+
+
 
 /**
  * Enqueue scripts and styles.
  */
+function digitalnomad_styles() {
+    
+    wp_enqueue_style( 'digitalnomad-bootstrap',get_template_directory_uri().'/css/bootstrap.css');
+    wp_enqueue_style( 'digitalnomad-font-awesome',get_template_directory_uri().'/css/font-awesome.css');
+    wp_enqueue_style( 'digitalnomad-owl-carousel',get_template_directory_uri().'/css/owl.carousel.css');
+    wp_enqueue_style( 'digitalnomad-owl-theme',get_template_directory_uri().'/css/owl.theme.css');
+    wp_enqueue_style( 'digitalnomad-animate',get_template_directory_uri().'/css/animate.css');
+    wp_enqueue_style( 'digitalnomad-stylesheet',get_template_directory_uri().'/css/lity.css');
+    wp_enqueue_style( 'digitalnomad-googleapis', 'https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Open+Sans:300,400,600,700,800|Lato:300,400|Crimson+Text:400,400i,600');    
+
+   
+    }
+add_action( 'wp_enqueue_scripts', 'digitalnomad_styles' );
+
+
+
 function digitalnomad_scripts() {
+    
+    wp_enqueue_script( 'digitalnomad-navigation', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-SmoothScroll', get_template_directory_uri() . '/js/SmoothScroll.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-lity', get_template_directory_uri() . '/js/lity.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-jquery-isotope', get_template_directory_uri() . '/js/jquery.isotope.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-owl-carousel', get_template_directory_uri() . '/js/owl.carousel.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'digitalnomad-wow-min', get_template_directory_uri() . '/js/wow.min.js', array(), '20151215', true );
+
 	wp_enqueue_style( 'digitalnomad-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'digitalnomad-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
