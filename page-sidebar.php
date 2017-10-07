@@ -1,6 +1,6 @@
 <?php
 /**
- * template name: Page
+ * template name: Page Sidebar
  * The template for displaying all pages
  *
  * This is the template that displays all pages by default.
@@ -19,27 +19,34 @@ get_header(); ?>
     ==========================================-->
 <div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
     <div class="content  wow fdeInUp">
-        <header class="entry-header" >   
-            <h1><?php the_title(); ?></h1>     
-        </header>   
+        <header class="entry-header" >
+            <h1><?php the_title(); ?></h1>
+        </header>
     </div>
 </div>
 
+
+
+<!--body content-->
+
 <div id="page-body"> 
     <div class="container">
-        <div class="row wow fadeInUp"> 
-            <div class="col-md-12 page-block"   >
+        <div class="row wow fadeInUp">       
+            <div class="col-md-8  col-sm-12 page-block"   >
                 <?php
                     if(have_posts()):
                         while ( have_posts() ) : the_post();
                 ?>
+                <p><?php the_content();?></p>       
                 
-                <p><?php the_content();?></p>               
+                <?php endwhile;endif;?>   
                 
-                <?php endwhile;endif;?>      
             </div>
-            <div class="clearfix"></div>
+               <aside class="col-md-4 col-sm-4" >
+                <?php get_sidebar(); ?>
+            </aside>  
         </div>
+       
     </div>
 </div>
 
