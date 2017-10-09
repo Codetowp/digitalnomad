@@ -180,6 +180,7 @@ function digitalnomad_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'digitalnomad_scripts' );
 
+
 /**
  * Implement the Custom Header feature.
  */
@@ -199,6 +200,9 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+add_image_size( 'header_image', 840, 527,  array( 'top', 'center' )  );
+
 
 /**
  * Load Jetpack compatibility file.

@@ -7,6 +7,8 @@
  * @package Digital_Nomad
  */
 
+
+
 if ( ! function_exists( 'digitalnomad_entry_category' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.

@@ -21,7 +21,9 @@ function digitalnomad_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'digitalnomad_body_classes' );
 
+
 /**
+
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
 function digitalnomad_pingback_header() {

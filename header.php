@@ -58,7 +58,7 @@
             
             
             
-         <a class="navbar-brand" href="index.html">    
+         <a class="navbar-brand" href="<?php the_permalink();?>">    
             <?php echo $img; ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo GET_OPTION('blogdescription'); ?></span>
         </a> </div>
       <!--search icon-->
@@ -92,11 +92,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          
-            <form id="search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get"> 
-
-                <input type="text"  placeholder="<?php echo esc_attr_x( 'Search...&hellip;', 'placeholder', 'digitalnomad' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" size="40"/>
-            </form>
+        
+           <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" id="search">
+						<input  type="text"  placeholder="<?php echo esc_attr_x( 'Type Here&hellip;', 'placeholder', 'digitalnomad' ); ?>"  value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'digitalnomad' ); ?>" size="40" />
+           </form>
       </div>
       </div>
     </div>
