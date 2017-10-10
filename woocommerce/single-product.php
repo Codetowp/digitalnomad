@@ -23,39 +23,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header( 'shop' ); ?>
 
 
-
-
 <!-- banner Page
     ==========================================-->
-<?php 
-   /* $background_img   = esc_url( get_theme_mod( 'dblogger_custom_img' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/b-1.jpg";
-    $image = $background_img ? "$background_img" : "$background_img_static"; */
-?>
-
-<Section id="page-banner" style="background-image: url(<?php //echo $image; ?>);">
-  <div class="overlay-banner">
-    <div class="content">
-      <div class="container "> 
-        <!--breadcrumb-->
-        <ol class="breadcrumb">
-            <?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-            do_action( 'woocommerce_before_main_content' );
-	?>
-        </ol>
-        <!--/breadcrumb-->
-        <h1><?php the_title(); ?></h1>
-       <!-- <header class="entry-header"><a href="#"> </a></header>-->
-      </div>
+<div id="page-banner-others" style="background-image: url(<?php header_image(); ?>);">
+  <div class="content  wow fdeInUp">
+    <div class="container ">
+      <h1><?php the_title(); ?></h1>
     </div>
   </div>
-</Section>
+</div>
 
 <!--woocommerce body-->
 
@@ -64,44 +40,41 @@ get_header( 'shop' ); ?>
     <div class="row">
       <div id="container">
         <div id="content" role="main">
-          <div id="product-37" class="post-37 product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-t-shirts first instock shipping-taxable purchasable product-type-simple">
-            
-   <?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		//do_action( 'woocommerce_before_main_content' );
-	?>
+                    <div id="product-37" class="post-37 product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-t-shirts first instock shipping-taxable purchasable product-type-simple">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+                        <?php
+                            /**
+                            * woocommerce_before_main_content hook.
+                            *
+                            * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                            * @hooked woocommerce_breadcrumb - 20
+                            */
+                            do_action( 'woocommerce_before_main_content' );
+                        ?>
 
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
+                        <?php while ( have_posts() ) : the_post(); ?>
 
-		<?php endwhile; // end of the loop. ?>
-            <!-- .summary -->
-            <?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
+                        <?php wc_get_template_part( 'content', 'single-product' ); ?>
 
-           
-          </div>
-          <!-- #product-37 --> 
-          
+                        <?php endwhile; // end of the loop. ?>
+
+                        <!-- .summary -->
+                        <?php
+                            /**
+                            * woocommerce_after_main_content hook.
+                            *
+                            * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+                            */
+                            do_action( 'woocommerce_after_main_content' );
+                        ?>
+
+                    </div>
+					<!-- #product-37 --> 
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
-
-
 
 <?php get_footer( 'shop' );
 
