@@ -82,6 +82,14 @@ get_header(); ?>
 		<div class="row"> 
 			<!--content body-->
 			<div class="col-md-8">
+                <?php
+                     $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
+                        if ( digitalnomad_is_selective_refresh() ) 
+                        {
+                            $disable = false;
+                        }
+                        if ( ! $disable) :
+                ?>
 				<article> 
 					<!--Article slider-->
 					<div id="article-slider" class="owl-carousel owl-theme"> 
@@ -111,6 +119,8 @@ get_header(); ?>
 					</div>
 					<!--/Article slider--> 
 				</article>
+                <?php endif;?>
+
                 <!--blog section-->
                 <?php 
                     $count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );

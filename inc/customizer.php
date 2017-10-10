@@ -178,8 +178,66 @@ function digitalnomad_customize_register( $wp_customize ) {
                 'priority' 		   => 20,
             ) );
 		}
+/**********Slider***********/
+
+        $wp_customize->add_section( 'digitalnomad_slider_options' , array(
+            'title'      => __('Slider','digitalnomad'),
+            'priority'   => 30,
+        )
+      );
+
+    
+        /********* header Disable **********/
+    
+        $wp_customize->add_setting( 'digitalnomad_slider_disable', array(
+                'sanitize_callback' => 'digitalnomad_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'digitalnomad_slider_disable', array(
+                'settings' => 'digitalnomad_slider_disable',
+                'label'    => __( 'Disable Slider Section?', 'digitalnomad' ),
+                'section'  => 'digitalnomad_slider_options',
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+		
+		global $options_categories;
+            $wp_customize->add_setting('digitalnomad_slide_categorie', array(
+                'default' => '',
+                'type' => 'option',
+                'capability' => 'edit_theme_options',
+                'sanitize_callback' => 'atoz_sanitize_slidecat'
+            ));
+		
+		
+    
+        $wp_customize->add_setting('digitalnomad_slider_number',
+                array(
+                    'sanitize_callback' => 'digitalnomad_sanitize_integer'
+                )
+            );
+            
+        $wp_customize->add_control('digitalnomad_slider_number',
+            array(
+                'type' => 'integer',
+                'default' => 3,
+                'label' => __('Number Of Slides To Show - i.e 10 (default is 3)','digitalnomad'),
+                'section' => 'digitalnomad_slider_options',
+
+                )
+            ); 
 
 
+    
+    
+    
+    
 /*********Blog Section**********/
     
         $wp_customize->add_section('digitalnomad_blog_section', array(
@@ -227,6 +285,8 @@ function digitalnomad_customize_partial_header_tag_line() {
     echo get_theme_mod('digitalnomad_header_tag_line');
 }
 
+
+
 /**
  * Render the site tagline for the selective refresh partial.
  *
@@ -240,3 +300,5 @@ function digitalnomad_customize_preview_js() {
 	wp_enqueue_script( 'digitalnomad-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'digitalnomad_customize_preview_js' );
+
+
