@@ -18,14 +18,7 @@
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Numero-nomad</title>
-<meta name="description" content="">
-<meta name="author" content="">
-
-<!-- Favicons
-    ================================================== -->
-<link rel="shortcut icon" href="#" type="image/x-icon">
-    
+<title>Numero-nomad</title> 
 <?php wp_head(); ?> 
 
 </head>
