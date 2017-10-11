@@ -18,7 +18,7 @@
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Numero-nomad</title> 
+<title><?php echo bloginfo( 'name' ); ?></title> 
 <?php wp_head(); ?> 
 
 </head>
@@ -51,7 +51,7 @@
             
             
             
-         <a class="navbar-brand" href="<?php the_permalink();?>">    
+         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">    
             <?php echo $img; ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo GET_OPTION('blogdescription'); ?></span>
         </a> </div>
       <!--search icon-->

@@ -48,22 +48,13 @@ function digitalnomad_customize_register( $wp_customize ) {
         
 	}
     
-/*****************************Panel***********************************************/
-    
-		$wp_customize->add_panel( 'digitalnomad_pannel' ,array(
-            'priority'        		=> 101,
-            'title'           		=> esc_html__( 'Frontpage Theme Sections', 'digitalnomad' ),
-            'description'     		=> '',
-        ) );
-    
 /********* header intro **********/
     
         $wp_customize->add_section('digitalnomad_header', array(
             'title'                     => __('Header Intro', 'digitalnomad'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 15,   
-            'panel'                     => 'digitalnomad_pannel',    
-
+            'priority'                  => 60,   
+            
         ));
     
         /********* header Disable **********/
@@ -181,8 +172,8 @@ function digitalnomad_customize_register( $wp_customize ) {
 /**********Slider***********/
 
         $wp_customize->add_section( 'digitalnomad_slider_options' , array(
-            'title'      => __('Slider','digitalnomad'),
-            'priority'   => 30,
+            'title'      => __('Slider Section','digitalnomad'),
+            'priority'   => 61,
         )
       );
 
@@ -251,10 +242,31 @@ function digitalnomad_customize_register( $wp_customize ) {
         $wp_customize->add_section('digitalnomad_blog_section', array(
             'title'                     => __('Blog Section', 'digitalnomad'),
             'description'               => 'Easily edit your header section',
-            'priority'                  => 50,   
-            'panel'                     => 'digitalnomad_pannel',    
+            'priority'                  => 62,   
 
         ));
+    
+    
+        /********* header Disable **********/
+    
+        $wp_customize->add_setting( 'digitalnomad_blog_disable', array(
+                'sanitize_callback' => 'digitalnomad_sanitize_checkbox',
+                'default'           => '',
+                'capability'        => 'manage_options',
+                'transport'         => 'refresh',
+            )
+        );
+    
+        
+        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'digitalnomad_blog_disable', array(
+                'settings' => 'digitalnomad_blog_disable',
+                'label'    => __( 'Disable Blog Section?', 'digitalnomad' ),
+                'type'     => 'ios',
+                'priority' => 1,
+
+        ) ) );
+ 
+    
     
     
         $wp_customize->add_setting( 'digitalnomad_blog_section_count', array(

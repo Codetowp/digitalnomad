@@ -77,10 +77,34 @@ if ( ! function_exists( 'digitalnomad_posted_on' ) ) :
 			esc_html_x( 'by %s', 'post author', 'digitalnomad' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
-		echo '<span class="date-article">' . $posted_on . '</span><span class="author vcard"> ' . $byline . '</span>'; // WPCS: XSS OK.
+		echo '<span class="date-article">' . $posted_on . '</span>'; // WPCS: XSS OK.
 
 	}
 endif;
+
+
+            
+if ( ! function_exists( 'digitalnomad_author' ) ) :
+	/**
+	 * Prints HTML with meta information for the current post-date/time and author.
+	 */
+	function digitalnomad_author() {
+		
+		$byline = sprintf(
+			/* translators: %s: post author. */
+			esc_html_x( 'by %s', 'post author', 'digitalnomad' ),
+			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		);
+		echo '<span class="author vcard"> ' . $byline . '</span>'; // WPCS: XSS OK.
+
+	}
+endif;
+
+
+
+
+
+
 
 if ( ! function_exists( 'digitalnomad_is_selective_refresh' ) ) {
     function digitalnomad_is_selective_refresh()
