@@ -3447,6 +3447,17 @@ opacity:0.8;
 
 .woocommerce div.product .product_title{color:#404040; font-weight:700;}
 
+.woocommerce nav.woocommerce-pagination {
+    text-align: center;
+}
+
+.woocommerce ul.products {
+    content: "";
+    display: inherit;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+}
 
 #woocommerce-page {
 	padding: 80px 0 180px;

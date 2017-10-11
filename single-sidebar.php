@@ -1,5 +1,7 @@
 <?php
-/**
+/** 
+
+ *
  * The template for displaying all single posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
@@ -36,7 +38,7 @@ get_header(); ?>
     <div class="container">
         <div class="row wow fadeInUp"> 
             <!--blog posts container-->
-            <div class="col-md-10 col-md-offset-1 col-sm-12 single-post">
+            <div class="col-md-8 col-md-offset-0 col-sm-12 single-post">
                 <?php
 		          if(have_posts()):		  
 		              while ( have_posts() ) : the_post();
@@ -48,6 +50,9 @@ get_header(); ?>
                 
                 <?php endwhile;endif;?>  
             </div>
+             <aside class="col-md-4 col-sm-4" > 
+                 <?php get_sidebar(); ?>
+            </aside>
             <div class="clearfix"></div>
         </div>
     </div>

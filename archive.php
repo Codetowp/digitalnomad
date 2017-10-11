@@ -8,44 +8,66 @@
  */
 
 get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php
-		if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+        <?php if ( have_posts() ) : ?>
+        <div id="page-banner-others" style="background-image: url(<?php echo get_template_directory_uri()?>/img/bg-2.jpg);">
+            <div class="content  wow fdeInUp">
+                <div class="container">
+                    <?php
+                        the_archive_title( '<h1 >', '</h1>' );
+                        the_archive_description( '<div class="archive-description">', '</div>' );
+                    ?>
+                </div>
+            </div>
+        </div>     
+        <!--Home content-->
+        <section id="home-content">
+            <div class="container">
+                <div class="row"> 
+                    <!--content body-->
+                    <div class="col-md-8">
+                        <?php
+                        /* Start the Loop */
+                        while ( have_posts() ) : the_post();
+                        ?>
+                        <article>
+                            <header class="entry-header">
+                                
+                                <div class="col-md-6"> 
+                                    <?php
+                                        if  ( get_the_post_thumbnail()!='')
+                                            {
+                                                the_post_thumbnail('digitalnomad_category'); 
+                                            }
+                                        else
+                                            {?>
+                                                <img src="<?php echo get_template_directory_uri()?>/img/05-screenshot.jpg"  alt="image 1" >
+                                        <?php 
+                                            }
+                                    ?> 
+                                    
+                                    
+                                </div>
+                                <div class="home-article-content col-md-6"> 
+                                    <span class="tag-details">
+                                        <a href="#">Fashion</a> . 
+                                        <span class="date-article"><?php  digitalnomad_posted_on();?></span>
+                                    </span>
+                                    <h2><?php the_title(); ?></h2>
+                                    <span class="byline"> By <span class="author vcard"><a href="#">Allie Kingsley</a></span></span>
+                                    <p><?php the_content();  ?><a href="<?php the_permalink();?>">Read more</a> </p>
+                                </div>
+                            </header>
+                        </article>
+                        <?php endwhile;?>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php endif;?>
+    </main>
+</div>
 <?php
-get_sidebar();
+
 get_footer();

@@ -8,23 +8,32 @@
  */
 
 ?>
+<article>
+    <header class="entry-header">
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+        <div class="col-md-6"> 
+            <?php
+                if  ( get_the_post_thumbnail()!='')
+                    {
+                        the_post_thumbnail('digitalnomad_category'); 
+                    }
+                else
+                    {?>
+                        <img src="<?php echo get_template_directory_uri()?>/img/05-screenshot.jpg"  alt="image 1" >
+                <?php 
+                    }
+            ?> 
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php digitalnomad_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php digitalnomad_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+        </div>
+        <div class="home-article-content col-md-6"> 
+            <span class="tag-details">
+                <a href="#">Fashion</a> . 
+                <span class="date-article"><?php  digitalnomad_posted_on();?></span>
+            </span>
+            <h2><?php the_title(); ?></h2>
+            <span class="byline"> By <span class="author vcard"><a href="#"><?php echo get_author_name();?></a></span></span>
+            <p><?php the_content();  ?><a href="<?php the_permalink();?>">Read more</a> </p>
+        </div>
+    </header>
+</article>
