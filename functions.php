@@ -181,6 +181,15 @@ function digitalnomad_scripts() {
 add_action( 'wp_enqueue_scripts', 'digitalnomad_scripts' );
 
 
+/* Globals variables */
+global $options_categories;
+	$options_categories = array();
+	$options_categories_obj = get_categories();
+	foreach ($options_categories_obj as $category) {
+       $options_categories[$category->cat_ID] = $category->cat_name;
+	}
+
+
 /**
  * Implement the Custom Header feature.
  */
@@ -202,6 +211,7 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 add_image_size( 'header_image', 840, 527,  array( 'top', 'center' )  );
+add_image_size( 'digitalnomad_slider', 1920, 1000,  array( 'top', 'center' ) );
 
 
 /**

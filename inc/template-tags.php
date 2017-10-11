@@ -148,3 +148,48 @@ if ( ! function_exists( 'digitalnomad_entry_footer' ) ) :
 		);
 	}
 endif;
+
+
+if ( ! function_exists( 'digitalnomad_featured_slider()' ) ) :
+/**
+ * Featured image slider, displayed on front page for static page and blog
+ */
+function digitalnomad_featured_slider() {
+        $firstClass = 'active'; 
+        $count = get_theme_mod( 'digitalnomad_slider_number' );
+       $slidecat =get_option( 'digitalnomad_slide_categories' );
+
+        $query = new WP_Query( array( 'cat' =>$slidecat,'posts_per_page' =>$count ) );
+ 
+        if ( is_front_page() ) :
+    
+        if ($query->have_posts()) :
+          while ($query->have_posts()) : $query->the_post();
+
+    ?>
+      <div class="item <?php echo $firstClass; ?>">  
+          <?php
+            if  ( get_the_post_thumbnail()!='')
+            {
+             the_post_thumbnail('digitalnomad_slider'); 
+            }?>
+
+            
+          <div class="article-slider-caption">
+            <h1><?php the_title();?></h1>
+						<p><?php the_excerpt(); ?></p>
+            <a href="<?php the_permalink(); ?>" ><?php _e( 'Read Article', 'digitalnomad' ); ?></a> </div>
+        </div>
+      
+    
+    <?php
+    
+        $firstClass = "";
+              endwhile;
+    
+            endif;
+    endif;
+
+ 
+}
+endif;

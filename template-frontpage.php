@@ -90,35 +90,18 @@ get_header(); ?>
                         }
                         if ( ! $disable) :
                 ?>
-				<article> 
-					<!--Article slider-->
-					<div id="article-slider" class="owl-carousel owl-theme"> 
-						<!--slider 1-->
-						<div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/p-1.jpg"> 
-							<!--slider caption-->
-							<div class="article-slider-caption"> <span>LIFESTYLE</span>
-								<h2>7 things I did to reboot my life in three weeks </h2>
-								<p>“Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled and heartily arena of fire.”</p>
-								<a href="#">Read Article</a>
-							</div>
-							<!--/slider caption--> 
-						</div>
-						<!--/slider 1--> 
+                <article> 
+                    <!--Article slider-->
+                    <div id="article-slider" class="owl-carousel owl-theme"> 
+                        
+                        			<?php digitalnomad_featured_slider(); ?>        
 
-						<!--slider 2-->
-						<div class="item"> <img src="<?php echo get_template_directory_uri(); ?>/img/g-2.jpg"> 
-							<!--slider caption-->
-							<div class="article-slider-caption"> <span>LIFESTYLE</span>
-								<h2>7 things I did to reboot my life in three weeks </h2>
-								<p>“Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled and heartily arena of fire.”</p>
-								<a href="#">Read Article</a> 
-							</div>
-							<!--/slider caption--> 
-						</div>
-						<!--/slider 2--> 
-					</div>
-					<!--/Article slider--> 
-				</article>
+                     
+                   
+                    
+                    </div>
+                    <!--/Article slider--> 
+                </article>
                 <?php endif;?>
 
                 <!--blog section-->

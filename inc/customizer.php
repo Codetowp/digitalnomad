@@ -187,7 +187,7 @@ function digitalnomad_customize_register( $wp_customize ) {
       );
 
     
-        /********* header Disable **********/
+        /********* slider Disable **********/
     
         $wp_customize->add_setting( 'digitalnomad_slider_disable', array(
                 'sanitize_callback' => 'digitalnomad_sanitize_checkbox',
@@ -207,15 +207,23 @@ function digitalnomad_customize_register( $wp_customize ) {
 
         ) ) );
 		
-		global $options_categories;
-            $wp_customize->add_setting('digitalnomad_slide_categorie', array(
+        global $options_categories;
+        $wp_customize->add_setting('digitalnomad_slide_categories', array(
                 'default' => '',
                 'type' => 'option',
                 'capability' => 'edit_theme_options',
-                'sanitize_callback' => 'atoz_sanitize_slidecat'
+                'sanitize_callback' => 'digitalnomad_sanitize_slidecat'
             ));
-		
-		
+        $wp_customize->add_control('digitalnomad_slide_categories', array(
+                'label' => __('Slider Category', 'atoz'),
+                'section' => 'digitalnomad_slider_options',
+                'type'    => 'select',
+                'description' => __('Select a category for the featured post slider', 'atoz'),
+                'choices'    => $options_categories
+            ));
+    
+
+    
     
         $wp_customize->add_setting('digitalnomad_slider_number',
                 array(
@@ -286,6 +294,15 @@ function digitalnomad_customize_partial_header_tag_line() {
 }
 
 
+function digitalnomad_sanitize_slidecat( $input ) {
+    global $options_categories;
+    if ( array_key_exists( $input, $options_categories ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+}
+
 
 /**
  * Render the site tagline for the selective refresh partial.
@@ -300,5 +317,6 @@ function digitalnomad_customize_preview_js() {
 	wp_enqueue_script( 'digitalnomad-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'digitalnomad_customize_preview_js' );
+
 
 
