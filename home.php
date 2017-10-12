@@ -92,11 +92,8 @@ get_header(); ?>
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
                         
-                        			<?php digitalnomad_featured_slider(); ?>        
+                        <?php digitalnomad_featured_slider(); ?>        
 
-                     
-                   
-                    
                     </div>
                     <!--/Article slider--> 
                 </article>

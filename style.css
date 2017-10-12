@@ -118,6 +118,28 @@ h6 {
 	font-size: 62px;
 	font-weight: 900;
 }
+
+
+.home-article-content p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.8;
+	letter-spacing: .5px;
+	position: relative;
+}
+.home-article-content a.article-read-more {
+	color: #4be1ab;
+	text-decoration: underline;
+}
+.home-article-content a.article-read-more:hover {
+	color: #4be1ab;
+	opacity: 0.8;
+	transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+}
+
 p {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
@@ -2687,10 +2709,14 @@ embed, iframe, object {
 	line-height: 1.6;
 	font-weight: 400
 }
-#home-content article .entry-header p a {
+#home-content article .entry-header  a.article-read-more {
 	color: #2196f3;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: 'Crimson Text', serif;
 }
-#home-content article .entry-header p a:hover {
+#home-content article .entry-header p a.article-read-more:hover {
 	opacity: 0.5;
 	transition: all .5s ease-in-out;
 }
@@ -2714,8 +2740,6 @@ embed, iframe, object {
 	color: #aab3bc;
 	font-weight: 600;
 }
-
-
 
 .posts-navigation {
 	display: block;

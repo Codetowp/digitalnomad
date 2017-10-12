@@ -6,8 +6,7 @@
  *
  * @package numero
  */
-
-                                                                                                                                                                                                                                                                                                                                                                                                    ?>
+?>
 
 
 <article>
@@ -37,7 +36,7 @@
             <h2><?php the_title();?></h2>
             <span class="byline"> By <span class="author vcard"><a href="#"><?php echo get_author_name();?></a></span></span>
             <p><?php the_excerpt(); ?>
-                <a href="<?php the_permalink();?>">Read more</a> 
+                <a class="article-read-more" href="<?php the_permalink();?>">Read more</a> 
             </p>
         </div>
     </header>
