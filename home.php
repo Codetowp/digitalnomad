@@ -92,28 +92,36 @@ get_header(); ?>
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
                         
-                        			<?php digitalnomad_featured_slider(); ?>        
+                        <?php digitalnomad_featured_slider(); ?>        
 
-                     
-                   
-                    
                     </div>
                     <!--/Article slider--> 
                 </article>
                 <?php endif;?>
 
                 <!--blog section-->
+                 <?php
+                     $disable    = get_theme_mod( 'digitalnomad_blog_disable' ) == 1 ? true : false ;
+                        if ( digitalnomad_is_selective_refresh() ) 
+                        {
+                            $disable = false;
+                        }
+                        if ( ! $disable) :
+                ?>
+                
                 <?php 
-                    $count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
-                    $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+                        $count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
+                        $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
-                    if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+                        if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 
-                        get_template_part( 'template-parts/content', get_post_format() );
+                            get_template_part( 'template-parts/content', get_post_format() );
 
                     endwhile;endif;
                     wp_reset_postdata(); 
                 ?>
+                <?php endif;?>
+
                 <!--/blog section-->
 
                 
