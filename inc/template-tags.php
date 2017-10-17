@@ -174,7 +174,7 @@ if ( ! function_exists( 'digitalnomad_entry_footer' ) ) :
 endif;
 
 
-if ( ! function_exists( 'digitalnomad_featured_slider()' ) ) :
+if ( ! function_exists( 'digitalnomad_featured_slider' ) ) :
 /**
  * Featured image slider, displayed on front page for static page and blog
  */
@@ -185,8 +185,6 @@ function digitalnomad_featured_slider() {
 
         $query = new WP_Query( array( 'cat' =>$slidecat,'posts_per_page' =>$count ) );
  
-        if ( is_front_page() ) :
-    
         if ($query->have_posts()) :
           while ($query->have_posts()) : $query->the_post();
 
@@ -211,7 +209,6 @@ function digitalnomad_featured_slider() {
         $firstClass = "";
               endwhile;
     
-            endif;
     endif;
 
  
