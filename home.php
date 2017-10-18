@@ -81,18 +81,19 @@ get_header(); ?>
 			<!--content body-->
 			<div class="col-md-8">
                 <?php
+               get_theme_mod( 'digitalnomad_slider_disable' );
                      $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
                         if ( digitalnomad_is_selective_refresh() ) 
                         {
                             $disable = false;
                         }
-                        if ( ! $disable) :
+                        if (  !$disable) :
                 ?>
                 <article> 
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
                         
-                        <?php digitalnomad_featured_slider(); ?>        
+                        <?php  digitalnomad_featured_slider(); ?>        
 
                     </div>
                     <!--/Article slider--> 

@@ -151,24 +151,7 @@ function digitalnomad_customize_register( $wp_customize ) {
         ) );	  
     
 
-       $social_sites = array( 'facebook', 'twitter','instagram',  'google-plus', 'pinterest', 'linkedin', 'rss');
-
-		foreach( $social_sites as $social_site ) 
-        {
-                $wp_customize->add_setting( "social[$social_site]", array(
-                'default'           => '',
-                'type'              => 'theme_mod',
-                'capability'        => 'edit_theme_options',
-                'sanitize_callback' => 'esc_url_raw'
-            ) );
-
-                $wp_customize->add_control( "social[$social_site]", array(
-                'label'            => ucwords( $social_site ) . __( " Url:", 'digitalnomad' ),
-                'section'          => 'digitalnomad_header',
-                'type'             => 'text',
-                'priority' 		   => 20,
-            ) );
-		}
+       
 /**********Slider***********/
 
         $wp_customize->add_section( 'digitalnomad_slider_options' , array(
@@ -282,7 +265,32 @@ function digitalnomad_customize_register( $wp_customize ) {
             )
         );
     
+       /********* Footer Section **********/   
     
+    
+      
+		$wp_customize->add_section( 'social', array(
+			'title'    					=> __( '[digitalnomad]Footer Social', 'digitalnomad'  ),
+			'priority'                  => 110,
+		
+		) );
+
+		$social_sites = array( 'facebook', 'twitter','google-plus',  'behance', 'dribbble', 'tumblr');
+
+		foreach( $social_sites as $social_site ) 
+		{
+			$wp_customize->add_setting( "social[$social_site]", array(
+				'type'              	=> 'theme_mod',
+				'capability'        	=> 'edit_theme_options',
+				'sanitize_callback' 	=> 'esc_url_raw'
+			) );
+
+			$wp_customize->add_control( "social[$social_site]", array(
+				'label'   				=> ucwords( $social_site ) . __( " Url:", 'digitalnomad' ),
+				'section' 				=> 'social',
+				'type'    				=> 'text',
+			) );
+		}
     
     
 }

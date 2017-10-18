@@ -20,7 +20,7 @@ if ( ! function_exists( 'digitalnomad_entry_category' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'digitalnomad' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'digitalnomad' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="tag-details">' . esc_html__( '%1$s', 'digitalnomad' ) , $categories_list ); // WPCS: XSS OK.
 			}
 
 			
@@ -77,7 +77,7 @@ if ( ! function_exists( 'digitalnomad_posted_on' ) ) :
 			esc_html_x( 'by %s', 'post author', 'digitalnomad' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
-		echo '<span class="date-article">' . $posted_on . '</span>'; // WPCS: XSS OK.
+		echo '<span class="date-article">' . $posted_on . '</span></span>'; // WPCS: XSS OK.
 
 	}
 endif;
@@ -174,7 +174,7 @@ if ( ! function_exists( 'digitalnomad_entry_footer' ) ) :
 endif;
 
 
-if ( ! function_exists( 'digitalnomad_featured_slider()' ) ) :
+if ( ! function_exists( 'digitalnomad_featured_slider' ) ) :
 /**
  * Featured image slider, displayed on front page for static page and blog
  */
@@ -185,8 +185,6 @@ function digitalnomad_featured_slider() {
 
         $query = new WP_Query( array( 'cat' =>$slidecat,'posts_per_page' =>$count ) );
  
-        if ( is_front_page() ) :
-    
         if ($query->have_posts()) :
           while ($query->have_posts()) : $query->the_post();
 
@@ -211,7 +209,6 @@ function digitalnomad_featured_slider() {
         $firstClass = "";
               endwhile;
     
-            endif;
     endif;
 
  
