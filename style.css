@@ -2647,6 +2647,15 @@ embed, iframe, object {
 	margin-top: 25px;
 	display: block;
 }
+
+#article-slider .article-slider-caption span a {
+    display: inline-block;
+    color: #fff;
+	text-decoration: none;
+
+}
+
+
 #article-slider .owl-controls {
 	position: absolute;
 	top: 80%;

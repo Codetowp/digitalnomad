@@ -28,7 +28,7 @@ get_header(); ?>
 ?>
 
 <!--Home banner-->
-<section id="home-banner" style="background-image: url(<?php echo $image;?>);" class="half-height">
+<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="half-height">
 	<div class="content">
 		<div class="container wow fdeInUp"  data-wow-duration="1s">
 			<div class="row">
@@ -53,7 +53,7 @@ get_header(); ?>
 									$socials = $socials ? array_filter( $socials ) : array();
 									foreach ( $socials as $social => $name ) 
 										{
-											printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), $social );
+											printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html($social) );
 										}
 								}
 						?>
@@ -61,10 +61,10 @@ get_header(); ?>
 					<!--/Head social--> 
 
 					<a href="<?php echo  $button1_url=( get_theme_mod( 'digitalnomad_header_button_url' ) )?
-						( get_theme_mod( 'digitalnomad_header_button_url' ) ):'#'; ?>" class="btn-white btn" >
+						( esc_url(get_theme_mod( 'digitalnomad_header_button_url' )) ):'#'; ?>" class="btn-white btn" >
 
 						<?php echo  $button_text=( get_theme_mod( 'digitalnomad_header_button_text' ) )?
-						(get_theme_mod( 'digitalnomad_header_button_text' ) ):'Hire me'; ?>
+						esc_html((get_theme_mod( 'digitalnomad_header_button_text' ) )):'Hire me'; ?>
 					</a> 
 				</div>
 			</div>
