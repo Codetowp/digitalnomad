@@ -18,11 +18,11 @@ class Digitalnomad_Misc_Control extends WP_Customize_Control
 				default:
 
 				case 'heading':
-					echo '<span class="customize-control-title">' . $this->title . '</span>';
+					echo '<span class="customize-control-title">' . esc_html($this)->title . '</span>';
 					break;
 
 				case 'custom_message' :
-					echo '<p class="description">' . $this->description . '</p>';
+					echo '<p class="description">' . esc_html($this)->description . '</p>';
 					break;
 
 				case 'hr' :
@@ -42,7 +42,7 @@ class Digitalnomad_Textarea_Custom_Control extends WP_Customize_Control
 				<textarea class="large-text" cols="20" rows="5" <?php $this->link(); ?>>
 					<?php echo esc_textarea( $this->value() ); ?>
 				</textarea>
-				<p class="description"><?php echo $this->description ?></p>
+				<p class="description"><?php echo esc_html($this)->description ?></p>
 			</label>
 			<?php
 		}
@@ -246,7 +246,7 @@ class Digitalnomad_Editor_Custom_Control extends WP_Customize_Control
             </label>
             
             <textarea class="wp-js-editor-textarea large-text" data-editor-mod="<?php echo esc_attr( $this->mod ); ?>" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-            <p class="description"><?php echo $this->description ?></p>
+            <p class="description"><?php echo esc_html($this)->description ?></p>
         </div>
     <?php
     }
@@ -322,12 +322,12 @@ class Digitalnomad_Alpha_Color_Control extends WP_Customize_Control {
         <label>
             <?php // Output the label and description if they were passed in.
             if ( isset( $this->label ) && '' !== $this->label ) {
-                echo '<span class="customize-control-title">' . sanitize_text_field( $this->label ) . '</span>';
+                echo '<span class="customize-control-title">' . esc_html(sanitize_text_field( $this->label )) . '</span>';
             }
             if ( isset( $this->description ) && '' !== $this->description ) {
-                echo '<span class="description customize-control-description">' . sanitize_text_field( $this->description ) . '</span>';
+                echo '<span class="description customize-control-description">' . esc_html(sanitize_text_field( $this->description )) . '</span>';
             } ?>
-            <input class="alpha-color-control" type="text" data-show-opacity="<?php echo $show_opacity; ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
+            <input class="alpha-color-control" type="text" data-show-opacity="<?php echo esc_html($show_opacity); ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
         </label>
     <?php
     }
@@ -500,7 +500,7 @@ class Digitalnomad_Customize_Repeatable_Control extends WP_Customize_Control {
                 <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
             <?php endif; ?>
             <?php if ( ! empty( $this->description ) ) : ?>
-                <span class="description customize-control-description"><?php echo $this->description; ?></span>
+                <span class="description customize-control-description"><?php echo esc_html($this)->description; ?></span>
             <?php endif; ?>
         </label>
         <input data-hidden-value type="hidden" <?php $this->input_attrs(); ?> value="" <?php $this->link(); ?> />
@@ -508,7 +508,7 @@ class Digitalnomad_Customize_Repeatable_Control extends WP_Customize_Control {
             <ul class="list-repeatable"></ul>
         </div>
         <div class="repeatable-actions">
-            <span class="button-secondary add-new-repeat-item"><?php _e( 'Add an item', 'digitalnomad' ); ?></span>
+            <span class="button-secondary add-new-repeat-item"><?php esc_html_e( 'Add an item', 'digitalnomad' ); ?></span>
         </div>
         <?php
     }
@@ -523,7 +523,7 @@ class Digitalnomad_Customize_Repeatable_Control extends WP_Customize_Control {
                         <a class="widget-action" href="#"></a>
                     </div>
                     <div class="widget-title">
-                        <h4 class="live-title"><?php _e( 'Item', 'digitalnomad' ); ?></h4>
+                        <h4 class="live-title"><?php esc_html_e( 'Item', 'digitalnomad' ); ?></h4>
                     </div>
                 </div>
 

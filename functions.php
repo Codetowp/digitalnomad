@@ -44,11 +44,11 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 
 	// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'numero' ),
+			'menu-1' => esc_html__( 'Primary', 'digitalnomad' ),
 		) );
         
         register_nav_menus( array(
-			'footer-menu' => esc_html__( 'Footer', 'numero' ),
+			'footer-menu' => esc_html__( 'Footer', 'digitalnomad' ),
 		) );
 		/*
 		 * Switch default core markup for search form, comment form, and comments
