@@ -29,6 +29,30 @@ if ( ! function_exists( 'digitalnomad_entry_category' ) ) :
 	}
 endif;
 
+
+
+
+if ( ! function_exists( 'digitalnomad_entry_category_list' ) ) :
+	/**
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
+	function digitalnomad_entry_category_list() {
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() ) {
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( esc_html__( ', ', 'digitalnomad' ) );
+			if ( $categories_list ) {
+				/* translators: 1: list of categories. */
+				printf( '<span>' . esc_html__( '%1$s', 'digitalnomad' ) , $categories_list . '</span>' ); // WPCS: XSS OK.
+			}
+
+			
+		}
+
+	}
+endif;
+
+
 if ( ! function_exists( 'digitalnomad_entry_tag' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
@@ -198,7 +222,9 @@ function digitalnomad_featured_slider() {
 
             
           <div class="article-slider-caption">
-            <h1><?php the_title();?></h1>
+                        <?php digitalnomad_entry_category_list(); ?>
+
+            <h2><?php the_title();?></h2>
 						<p><?php the_excerpt(); ?></p>
             <a href="<?php the_permalink(); ?>" ><?php _e( 'Read Article', 'digitalnomad' ); ?></a> </div>
         </div>

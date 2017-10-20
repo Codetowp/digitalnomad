@@ -50,22 +50,26 @@ get_header(); ?>
                                     
                                 </div>
                                 <div class="home-article-content col-md-6"> 
-                                    <span class="tag-details">
-                                        <a href="#">Fashion</a> . 
-                                        <span class="date-article"><?php  digitalnomad_posted_on();?></span>
-                                    </span>
+                              
+                                         <?php digitalnomad_entry_category(); ?>
+                                        <?php digitalnomad_posted_on(); ?>
+                                   
                                     <h2><?php the_title(); ?></h2>
-                                    <span class="byline"> By <span class="author vcard"><a href="#">Allie Kingsley</a></span></span>
-                                    <p><?php the_content();  ?><a href="<?php the_permalink();?>">Read more</a> </p>
+                                    <span class="byline"> By <span class="author vcard"><a href="#"><?php echo get_author_name();?></a></span></span>
+                                    <p><?php the_excerpt(); ?><a class="article-read-more" href="<?php the_permalink();?>">Read more</a> </p>
                                 </div>
                             </header>
                         </article>
                         <?php endwhile;?>
                     </div>
+                         <aside class="col-md-4 col-sm-4" > 
+                                    <?php get_sidebar(); ?>
+                                </aside>
                 </div>
             </div>
         </section>
     <?php endif;?>
+        
     </main>
 </div>
 <?php

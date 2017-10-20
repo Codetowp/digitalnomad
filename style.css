@@ -2647,6 +2647,15 @@ embed, iframe, object {
 	margin-top: 25px;
 	display: block;
 }
+
+#article-slider .article-slider-caption span a {
+    display: inline-block;
+    color: #fff;
+	text-decoration: none;
+
+}
+
+
 #article-slider .owl-controls {
 	position: absolute;
 	top: 80%;
@@ -2739,6 +2748,14 @@ embed, iframe, object {
 #home-content article .entry-header .home-article-content span.tag-details .date-article {
 	color: #aab3bc;
 	font-weight: 600;
+}
+
+#home-content article .entry-header .home-article-content a.article-read-more {
+   color: #2196f3;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: 'Crimson Text', serif;
 }
 
 .posts-navigation {
