@@ -15,7 +15,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
     
-    $wp_customize->get_section('title_tagline')->title = __( 'Branding' ); 
+    $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
         
     require get_template_directory() . '/inc/customizer-controls.php';
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
@@ -88,7 +88,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,'header_background_image', array(
-            'label'                     => __( 'Background Image', '' ),
+            'label'                     => esc_html( 'Background Image', '' ),
             'section'                   => 'digitalnomad_header',
             'settings'                  => 'header_background_image',
             'context'                   => 'header_background_image',
@@ -189,10 +189,10 @@ function digitalnomad_customize_register( $wp_customize ) {
                 'sanitize_callback' => 'digitalnomad_sanitize_slidecat'
             ));
         $wp_customize->add_control('digitalnomad_slide_categories', array(
-                'label' => __('Slider Category', 'atoz'),
+                'label' => __('Slider Category', 'digitalnomad'),
                 'section' => 'digitalnomad_slider_options',
                 'type'    => 'select',
-                'description' => __('Select a category for the featured post slider', 'atoz'),
+                'description' => __('Select a category for the featured post slider', 'digitalnomad'),
                 'choices'    => $options_categories
             ));
     
@@ -306,11 +306,11 @@ function digitalnomad_customize_partial_blogname() {
 }
 
 function digitalnomad_customize_partial_header_text() {
-    echo get_theme_mod('digitalnomad_header_text');
+    echo esc_html(get_theme_mod('digitalnomad_header_text'));
 }
 
 function digitalnomad_customize_partial_header_tag_line() {
-    echo get_theme_mod('digitalnomad_header_tag_line');
+    echo esc_html(get_theme_mod('digitalnomad_header_tag_line'));
 }
 
 

@@ -11,7 +11,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
         <?php if ( have_posts() ) : ?>
-        <div id="page-banner-others" style="background-image: url(<?php echo get_template_directory_uri()?>/img/bg-2.jpg);">
+        <div id="page-banner-others" style="background-image: url(<?php header_image(); ?>);">
             <div class="content  wow fdeInUp">
                 <div class="container">
                     <?php
@@ -31,6 +31,7 @@ get_header(); ?>
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
                         ?>
+<<<<<<< HEAD
                         <article>
                             <header class="entry-header">
                                 
@@ -60,6 +61,10 @@ get_header(); ?>
                                 </div>
                             </header>
                         </article>
+=======
+                        <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+
+>>>>>>> 1981d69fb105948d0fb28ea5ebb10cc1dfcd1b86
                         <?php endwhile;?>
                     </div>
                          <aside class="col-md-4 col-sm-4" > 

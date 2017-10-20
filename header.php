@@ -18,7 +18,7 @@
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?php echo bloginfo( 'name' ); ?></title> 
+<?php echo esc_html(add_theme_support( 'title-tag' )); ?>
 <?php wp_head(); ?> 
 
 </head>
@@ -52,7 +52,7 @@
             
             
          <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">    
-            <?php echo $img; ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo GET_OPTION('blogdescription'); ?></span>
+            <?php echo $img; ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo esc_html(GET_OPTION('blogdescription')); ?></span>
         </a> </div>
       <!--search icon-->
        <a class="search-up pull-right"><i class="fa fa-search"></i></a> 
@@ -69,7 +69,7 @@
                         'menu_class'        => 'nav navbar-nav navbar-right' ) );
             ?>
             <?php else : ?>
-				<li ><a  href=" <?php echo esc_url(admin_url( 'nav-menus.php' ));?>  "><?php echo __( 'Add a Primary Menu', 'digitalnomad' );?>  </a></li>
+				<li ><a  href=" <?php echo esc_url(admin_url( 'nav-menus.php' ));?>  "><?php echo esc_html_e( 'Add a Primary Menu', 'digitalnomad' );?>  </a></li>
 			<?php endif; ?>
 
       </div>
