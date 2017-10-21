@@ -17,7 +17,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
     $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
         
-    require get_template_directory() . '/inc/customizer-controls.php';
+ require get_template_directory() . '/inc/customizer-controls.php';
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
 
@@ -72,7 +72,7 @@ function digitalnomad_customize_register( $wp_customize ) {
                 'settings' => 'digitalnomad_disable',
                 'label'    => __( 'Disable Header Section?', 'digitalnomad' ),
                 'section'  => 'digitalnomad_header',
-                'type'     => 'ios',
+                'type'     => 'toggle',
                 'priority' => 1,
 
         ) ) );
