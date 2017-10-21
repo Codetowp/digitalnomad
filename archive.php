@@ -11,7 +11,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
         <?php if ( have_posts() ) : ?>
-        <div id="page-banner-others" style="background-image: url(<?php header_image(); ?>);">
+        <div id="page-banner-others" style="background-image: url(<?php echo get_template_directory_uri()?>/img/bg-2.jpg);">
             <div class="content  wow fdeInUp">
                 <div class="container">
                     <?php
@@ -31,14 +31,45 @@ get_header(); ?>
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
                         ?>
-                        <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-
+                        <article>
+                            <header class="entry-header">
+                                
+                                <div class="col-md-6"> 
+                                    <?php
+                                        if  ( get_the_post_thumbnail()!='')
+                                            {
+                                                the_post_thumbnail('digitalnomad_category'); 
+                                            }
+                                        else
+                                            {?>
+                                                <img src="<?php echo get_template_directory_uri()?>/img/05-screenshot.jpg"  alt="image 1" >
+                                        <?php 
+                                            }
+                                    ?> 
+                                    
+                                    
+                                </div>
+                                <div class="home-article-content col-md-6"> 
+                              
+                                        <?php digitalnomad_entry_category_list(); ?>
+                                        <?php digitalnomad_posted_on(); ?>
+                                   
+                                    <h2><?php the_title(); ?></h2>
+                                    <span class="byline"> By <span class="author vcard"><a href="#"><?php echo get_author_name();?></a></span></span>
+                                    <p><?php the_excerpt(); ?><a class="article-read-more" href="<?php the_permalink();?>">Read more</a> </p>
+                                </div>
+                            </header>
+                        </article>
                         <?php endwhile;?>
                     </div>
+                         <aside class="col-md-4 col-sm-4" > 
+                                    <?php get_sidebar(); ?>
+                                </aside>
                 </div>
             </div>
         </section>
     <?php endif;?>
+        
     </main>
 </div>
 <?php

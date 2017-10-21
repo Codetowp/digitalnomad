@@ -30,6 +30,11 @@ if ( ! function_exists( 'digitalnomad_entry_category' ) ) :
 endif;
 
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 1981d69fb105948d0fb28ea5ebb10cc1dfcd1b86
 if ( ! function_exists( 'digitalnomad_entry_category_list' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
@@ -50,6 +55,10 @@ if ( ! function_exists( 'digitalnomad_entry_category_list' ) ) :
 	}
 endif;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1981d69fb105948d0fb28ea5ebb10cc1dfcd1b86
 if ( ! function_exists( 'digitalnomad_entry_tag' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
@@ -219,7 +228,12 @@ function digitalnomad_featured_slider() {
 
             
           <div class="article-slider-caption">
+<<<<<<< HEAD
+                        <?php digitalnomad_entry_category_list(); ?>
+
+=======
             <?php digitalnomad_entry_category_list(); ?>
+>>>>>>> 1981d69fb105948d0fb28ea5ebb10cc1dfcd1b86
             <h2><?php the_title();?></h2>
 						<p><?php the_excerpt(); ?></p>
             <a href="<?php the_permalink(); ?>" ><?php _e( 'Read Article', 'digitalnomad' ); ?></a> </div>

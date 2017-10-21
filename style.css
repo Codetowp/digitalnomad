@@ -2750,6 +2750,14 @@ embed, iframe, object {
 	font-weight: 600;
 }
 
+#home-content article .entry-header .home-article-content a.article-read-more {
+   color: #2196f3;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: 'Crimson Text', serif;
+}
+
 .posts-navigation {
 	display: block;
 	padding: 80px 0 40px;
