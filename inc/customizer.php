@@ -254,7 +254,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
         $wp_customize->add_setting( 'digitalnomad_blog_section_count', array(
             'default'                   => esc_html__('3','digitalnomad'),
-            'sanitize_callback'         => 'numero_sanitize_integer'
+            'sanitize_callback'         => 'digitalnomad_sanitize_integer'
             )
         );
          $wp_customize->add_control( 'digitalnomad_blog_section_count', array(
@@ -324,6 +324,11 @@ function digitalnomad_sanitize_slidecat( $input ) {
 }
 
 
+	function digitalnomad_sanitize_integer( $input ) {
+		if( is_numeric( $input ) ) {
+			return intval( $input );
+		}
+	}
 /**
  * Render the site tagline for the selective refresh partial.
  *
