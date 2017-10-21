@@ -6,11 +6,10 @@
  *
  * @package Digital_Nomad
  */
-
-get_header(); ?>
+get_header();
+?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
-        
         <div id="page-banner-others" style="background-image: url(<?php header_image(); ?>);">
             <div class="content  wow fdeInUp">
                 <div class="container">
@@ -29,11 +28,11 @@ get_header(); ?>
                     <div class="col-md-8">
                         <?php
                         /* Start the Loop */
-                        if ( have_posts() ) : 
-                            while ( have_posts() ) : the_post();
+							if ( have_posts() ) : 
+								while ( have_posts() ) : the_post();
                         ?>
-                        <?php  get_template_part( 'template-parts/content', get_post_format() ); ?>
-
+                        <?php  
+							get_template_part( 'template-parts/content', get_post_format() ); ?>
                         <?php 
                             endwhile;endif;
                             wp_reset_postdata(); ?>
@@ -49,24 +48,17 @@ get_header(); ?>
                                         )
                                     );
                                     ?>
-                                   
                                 </li>   
-
-                            </ul>
+							</ul>
                         </nav>
-                
-                        
                     </div>
-                         <aside class="col-md-4 col-sm-4" > 
-                                    <?php get_sidebar(); ?>
-                                </aside>
+					<aside class="col-md-4 col-sm-4" > 
+						<?php get_sidebar(); ?>
+					</aside>
                 </div>
             </div>
         </section>
-   
-        
     </main>
 </div>
-<?php
-
+<?php 
 get_footer();

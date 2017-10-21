@@ -9,8 +9,7 @@
 
 get_header(); ?>
 
-<!-- banner Page
-    ==========================================-->
+<!-- banner Page----->
 <div id="page-banner-others" style="background-image: url(<?php header_image(); ?>);">
 	<div class="content  wow fdeInUp">
 		<div class="container">
@@ -18,7 +17,6 @@ get_header(); ?>
 		</div>
 	</div>
 </div>
-
 <section id="home-content">
 	<div class="container">
 		<div class="row"> 
