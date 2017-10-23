@@ -7,6 +7,12 @@
  * @package Digital_Nomad
  */
 
+function digitalnomad_custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'digitalnomad_custom_excerpt_length', 999 );
+
+
 if ( ! function_exists( 'digitalnomad_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
