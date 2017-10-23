@@ -3818,6 +3818,8 @@ opacity:0.8;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
 	border: none;
+	float:left;
+	display:inline-block;
 	padding: 8px 30px;
 	background-color:#f7f7f7;
 }
@@ -3909,10 +3911,14 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
 .woocommerce div.product div.images img {
     display: block;
     width: 75%;
-    float: right;
+    overflow:hidden;
     height: auto;
     box-shadow: none;
 }
+
+
+.woocommerce.single-product .quantity{display:inline-block;}
+
 
 .woocommerce div.product div.images .woocommerce-product-gallery__image:nth-child(n+2) {
     width: 25%;
@@ -4090,6 +4096,10 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
 	margin-bottom:0; margin-top:0;
 	color:#fff; 
 	font-family:Arial, "open sans", Helvetica, sans-serif;
+	position: absolute;
+    top: 52px;
+    margin: 0 12px;
+    width: 168px;
 }
 .footer-site-content img {
 	position: relative;
