@@ -234,6 +234,7 @@ p a:hover {
 	font-size: 18px;
 	font-weight: bold;
 	text-transform: uppercase;
+	width:320px;
 	font-family: 'open sans', sans-serif;
 }
 #top-menu.navbar-default .navbar-brand img {
@@ -3926,12 +3927,27 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
     float: left;
 }
 
+.woocommerce .variations td.label label{margin-top:15px;}
 
 
+.woocommerce .variations{display:block; margin-bottom:15px;}
+.woocommerce select#pa_color {
+    color: #666;
+    border: 1px solid #e3e8f0;
+    border-radius: 8px;
+    padding: 9.5px;
+}
 
 
+.woocommerce .woocommerce-variation-add-to-cart.variations_button.woocommerce-variation-add-to-cart-disabled{display:block; margin-bottom:15px;}
 
 
+.woocommerce a.reset_variations {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-left: 12px;
+}
 
 /*--------------------
 6.1 Gallery & captions
