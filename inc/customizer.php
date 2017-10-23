@@ -17,7 +17,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
     $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
         
-    require get_template_directory() . '/inc/customizer-controls.php';
+ require get_template_directory() . '/inc/customizer-controls.php';
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
 
@@ -72,7 +72,7 @@ function digitalnomad_customize_register( $wp_customize ) {
                 'settings' => 'digitalnomad_disable',
                 'label'    => __( 'Disable Header Section?', 'digitalnomad' ),
                 'section'  => 'digitalnomad_header',
-                'type'     => 'ios',
+                'type'     => 'toggle',
                 'priority' => 1,
 
         ) ) );
@@ -254,7 +254,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
         $wp_customize->add_setting( 'digitalnomad_blog_section_count', array(
             'default'                   => esc_html__('3','digitalnomad'),
-            'sanitize_callback'         => 'numero_sanitize_integer'
+            'sanitize_callback'         => 'digitalnomad_sanitize_integer'
             )
         );
          $wp_customize->add_control( 'digitalnomad_blog_section_count', array(
@@ -324,6 +324,11 @@ function digitalnomad_sanitize_slidecat( $input ) {
 }
 
 
+	function digitalnomad_sanitize_integer( $input ) {
+		if( is_numeric( $input ) ) {
+			return intval( $input );
+		}
+	}
 /**
  * Render the site tagline for the selective refresh partial.
  *

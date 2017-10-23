@@ -21,7 +21,6 @@
 				{
 					$img='<img src="'. esc_url( $logo[0] ) .'" >';
 				} 
-				
 			?>
 			<!--website details-->
 			<div class="footer-site-content"> <?php echo $img; ?>
@@ -32,56 +31,50 @@
 				<ul>  
 					<?php
 						wp_nav_menu( array( 
-								'theme_location'    => 'footer-menu', 
-								'menu_class'        => 'col-md-12 page-nav' ) );
+							'theme_location'    => 'footer-menu', 
+							'menu_class'        => 'col-md-12 page-nav' ) 
+						);
 					?>
 				</ul>
 			</div>
 			<!--/Page nav--> 
-            
-            
             <!--social-nav-->
-      <div class="col-md-12 social-nav">
-        <ul>
-            <?php
-				if ( $socials = get_theme_mod( 'social' ) ) 
-				 {
-					$socials = $socials ? array_filter( $socials ) : array();
-					foreach ( $socials as $social => $name ) 
-					{
-						printf('<li><a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_url($social) );
-					}
-				 }
-				?>
-        </ul>
-      </div>
-      <!--/social nav--> 
-      
-      <!--social-nav-->
-      <div class="col-md-12 social-nav"> </div>
-      <!--/social nav--> 
-
-		<!--copy-right-->
-		<div class="col-md-12 copy-right">
-		<p> &copy; Copyright 2017. All Rights Reserved.</p>
-		<hr>
-		<p> Designed by <a href="#">Dcrazed Team</a>.</p>
-		</div>
-		<!--/copy-right--> 
-
+			<div class="col-md-12 social-nav">
+				<ul>
+					<?php
+						if ( $socials = get_theme_mod( 'social' ) ) 
+						{
+							$socials = $socials ? array_filter( $socials ) : array();
+							foreach ( $socials as $social => $name ) 
+							{
+								printf('<li><a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_url($social) );
+							}
+						}
+					?>
+				</ul>
+			</div>
+			<!--/social nav--> 
+			<!--social-nav-->
+			<div class="col-md-12 social-nav"> </div>
+			<!--/social nav--> 
+			<!--copy-right-->
+			<div class="col-md-12 copy-right">
+				<p> &copy; Copyright 2017. All Rights Reserved.</p>
+					<hr>
+				<p> Designed by <a href="#">Dcrazed Team</a>.</p>
+			</div>
+			<!--/copy-right--> 
 		</div>
 	</div>
 </footer>
 <!--/*footer*/--> 
 <?php wp_footer(); ?>
-
 <script>
   // Bind as an event handler
 $(document).on('click', '[data-lightbox]', lity);;
 </script> 
 <script>
 new WOW().init();
-
 </script> 
 <script>
 // Bind as an event handler

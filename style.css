@@ -2758,6 +2758,11 @@ embed, iframe, object {
     font-family: 'Crimson Text', serif;
 }
 
+#home-content article .entry-header .home-article-content h2 a{
+    color: #404040;
+    text-decoration: none
+
+}
 .posts-navigation {
 	display: block;
 	padding: 80px 0 40px;

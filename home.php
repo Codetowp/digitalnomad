@@ -129,22 +129,25 @@ get_header(); ?>
                 
 				<div class="clearfix"></div>
 				
-				<!--/page nav-->
-				<nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
+                <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
 					<ul>
-						<li >
-							<div class="nav-previous"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i></a></div>
-						</li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li >
-							<div class="nav-next"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-right"></i></a></div>
-						</li>
+						<li>
+							<?php
+							the_posts_pagination(
+								array(
+									'prev_text' => '<i class="fa fa-chevron-left"></i>' . __( 'Newer posts', 'digitalnomad' ),
+									'next_text' => __( 'Older posts', 'digitalnomad' ) . '<i class="fa fa-chevron-right"></i>',
+								)
+							);
+							?>
+							<?php wp_reset_postdata(); ?>
+						</li>   
+
 					</ul>
 				</nav>
+                
+                
+                
 			</div>
 			<!--/content body--> 
 			
