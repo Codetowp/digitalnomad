@@ -210,7 +210,6 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-add_image_size( 'header_image', 840, 527,  array( 'top', 'center' )  );
 add_image_size( 'digitalnomad_slider', 752, 500,  array( 'top', 'center' ) );
 add_image_size( 'digitalnomad_half_banner', 1920, 560,  array( 'top', 'center' ) );
 add_image_size( 'digitalnomad_full_banner', 1920, 1000,  array( 'top', 'center' ) );
