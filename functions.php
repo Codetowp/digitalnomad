@@ -148,6 +148,13 @@ function digitalnomad_styles()
     wp_enqueue_style( 'digitalnomad-animate',get_template_directory_uri().'/css/animate.css');
     wp_enqueue_style( 'digitalnomad-stylesheet',get_template_directory_uri().'/css/lity.css');
     wp_enqueue_style( 'digitalnomad-googleapis', 'https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Open+Sans:300,400,600,700,800|Lato:300,400|Crimson+Text:400,400i,600');
+    
+    
+    
+    /**
+	 * Customize control Layout
+	 */
+	wp_register_style( 'digitalnomad-customize-control-layout', get_template_directory_uri() . '/admin/css/digitalnomad-customize-control-layout.css', array( 'customize-controls' ), '20150610', 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'digitalnomad_styles' );
 
@@ -178,6 +185,15 @@ function digitalnomad_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+    
+        
+    /**
+	 * Customize control Layout
+	 */
+	
+	wp_register_script( 'digitalnomad-customize-control-layout', get_template_directory_uri() . '/admin/js/digitalnomad-customize-control-layout.js', array( 'customize-controls', 'jquery' ), '20140806', true );
+    
+    
 }
 add_action( 'wp_enqueue_scripts', 'digitalnomad_scripts' );
 

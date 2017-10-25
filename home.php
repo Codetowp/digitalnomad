@@ -28,7 +28,7 @@ get_header(); ?>
 ?>
 
 <!--Home banner-->
-<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="half-height">
+<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
 	<div class="content">
 		<div class="container wow fdeInUp"  data-wow-duration="1s">
 			<div class="row">

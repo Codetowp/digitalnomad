@@ -16,8 +16,9 @@ function digitalnomad_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
     
     $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
-        
- require get_template_directory() . '/inc/customizer-controls.php';
+       
+    require get_template_directory() . '/inc/customizer-functions.php'; // Extra functions.
+	require get_template_directory() . '/inc/customizer-controls.php'; // Extra controls.
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
 
@@ -317,6 +318,52 @@ function digitalnomad_customize_register( $wp_customize ) {
 			) );
 		}
     
+    /*layout*/
+    $wp_customize->add_section( 'layouts', array(
+		'title' => __( 'Layouts', 'digitalnomad' ),
+		'priority' => 115,
+	) );
+    
+      $wp_customize->add_setting( 'digitalnomad_banner_setting', array(
+            'default'        => 'half-height',
+        ) );
+
+        $wp_customize->add_control( 'digitalnomad_banner_setting', array(
+            'label'   => 'Radio Setting',
+            'section' => 'layouts',
+            'type'    => 'radio',
+            'choices' => array(
+					'half-height' => esc_html__( 'Half-Height', 'digitalnomad' ),
+					'full-height' => esc_html__( 'Full-Height', 'digitalnomad' ),
+				
+			),
+            'priority' => 3
+        ) );
+    
+        
+     $sanitize_layouts = new Digitalnomad_Sanitize_Select( array( 'disabled', 'none', 'left', 'right' ), 'disabled' );
+      
+
+    $wp_customize->add_setting( 'digitalnomad_sidebar_setting', array(
+		'default' => 'disabled',
+		'transport' => 'postMessage',
+		'sanitize_callback' => array( $sanitize_layouts, 'callback' ),
+	) );
+        $wp_customize->add_control( new Digitalnomad_Layout_Control( $wp_customize, 'digitalnomad_sidebar_setting', array(
+		'label' => __( 'Home', 'briar' ),
+		'section' => 'layouts',
+            'layouts' => array(
+			        'left' => array(
+                    'label' => __( 'Left', 'digitalnomad' ),
+                ),
+                'right' => array(
+                    'label' => __( 'Right', 'digitalnomad' ),
+                ),
+		),
+            'priority' => 3
+        ) ) );
+    
+    
     
 }
 add_action( 'customize_register', 'digitalnomad_customize_register' );
@@ -349,6 +396,21 @@ function digitalnomad_sanitize_slidecat( $input ) {
 }
 
 
+if ( ! function_exists( 'digitalnomad_sanitize_checkbox' ) ) 
+	{
+		function digitalnomad_sanitize_checkbox( $input ) 
+		{
+			if ( $input == 1 ) 
+			{
+				return 1;
+			} 
+			else 
+			{
+				return 0;
+			}
+		}
+	}
+
 	function digitalnomad_sanitize_integer( $input ) {
 		if( is_numeric( $input ) ) {
 			return intval( $input );
@@ -364,9 +426,7 @@ function digitalnomad_sanitize_slidecat( $input ) {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function digitalnomad_customize_preview_js() {
+    //wp_enqueue_script( 'digitalnomad_lessjs', get_template_directory_uri() . '/admin/js/briar-less.js', array(), '2.5.1', true );
 	wp_enqueue_script( 'digitalnomad-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'digitalnomad_customize_preview_js' );
-
-
-
