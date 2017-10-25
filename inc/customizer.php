@@ -230,7 +230,7 @@ function digitalnomad_customize_register( $wp_customize ) {
         ));
     
     
-        /********* header Disable **********/
+        /********* blog Disable **********/
     
         $wp_customize->add_setting( 'digitalnomad_blog_disable', array(
                 'sanitize_callback' => 'digitalnomad_sanitize_checkbox',
@@ -265,10 +265,35 @@ function digitalnomad_customize_register( $wp_customize ) {
             )
         );
     
+/*********page setting**********/
+    
+        $wp_customize->add_section('digitalnomad_page_setting', array(
+            'title'                     => __('Page Setting', 'digitalnomad'),
+            'description'               => 'Easily edit your header section',
+            'priority'                  => 63,   
+
+        ));
+    
+
+        $wp_customize->add_setting('digitalnomad_related_post_number',
+                array(
+                    'sanitize_callback' => 'digitalnomad_sanitize_integer'
+                )
+            );
+            
+        $wp_customize->add_control('digitalnomad_related_post_number',
+            array(
+                'type' => 'integer',
+                'default' => 3,
+                'label' => __('Number Of related post To Show - i.e 10 (default is 3)','digitalnomad'),
+                'section' => 'digitalnomad_page_setting',
+
+                )
+            ); 
+
+    
        /********* Footer Section **********/   
     
-    
-      
 		$wp_customize->add_section( 'social', array(
 			'title'    					=> __( '[digitalnomad]Footer Social', 'digitalnomad'  ),
 			'priority'                  => 110,

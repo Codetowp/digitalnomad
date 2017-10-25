@@ -20,8 +20,8 @@ function digitalnomad_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'digitalnomad_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1900,
-		'height'                 => 330,
+		'width'                  => 1920,
+		'height'                 => 560,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'digitalnomad_header_style',
 	) ) );
