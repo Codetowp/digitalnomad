@@ -661,7 +661,7 @@ class Digitalnomad_Customize_Repeatable_Control extends WP_Customize_Control {
                                             <# } #>
 
                                             <div class="actions">
-                                                <button class="button remove-button " <# if ( ! field.value.url ){ #> style="display:none"; <# } #> type="button"><?php _e( 'Remove', 'digitalnomad' ) ?></button>
+                                                <button class="button remove-button " <# if ( ! field.value.url ){ #> style="display:none"; <# } #> type="button"><?php esc_attr_e( 'Remove', 'digitalnomad' ) ?></button>
                                                 <button class="button upload-button" data-media="{{field.media}}" data-add-txt="<?php esc_attr_e( 'Add', 'digitalnomad' ); ?>" data-change-txt="<?php esc_attr_e( 'Change', 'digitalnomad' ); ?>" type="button"><# if ( ! field.value.url  ){ #> <?php _e( 'Add', 'digitalnomad' ); ?> <# } else { #> <?php _e( 'Change', 'digitalnomad' ); ?> <# } #> </button>
                                                 <div style="clear:both"></div>
                                             </div>

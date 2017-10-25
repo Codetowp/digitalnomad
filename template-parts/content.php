@@ -15,7 +15,7 @@
              <?php
                 if  ( get_the_post_thumbnail()!='')
                 {
-                    the_post_thumbnail('digitalnomad_blog_section'); 
+                    the_post_thumbnail('digitalnomad_post_preview'); 
                 }
                 else
                 {   ?>

@@ -2622,10 +2622,13 @@ embed, iframe, object {
 #article-slider .article-slider-caption h2, #article-slider .article-slider-caption span, #article-slider .article-slider-caption p, #article-slider .article-slider-caption a {
 	position: relative;
 }
-#article-slider .article-slider-caption h2 {
-	font-size: 42px;
+#article-slider .article-slider-caption a h2 {
+	color:#fff;
+    font-size: 42px;
 	font-weight: bold;
 }
+
+
 #article-slider .article-slider-caption span {
 	font-size: 14px;
 	font-weight: 700;

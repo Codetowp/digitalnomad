@@ -221,7 +221,7 @@ function digitalnomad_featured_slider() {
 
             <?php digitalnomad_entry_category_list(); ?>
 
-            <h2><?php the_title();?></h2>
+              <a href="<?php the_permalink();?>"><h2><?php the_title();?></h2></a>
 						<p><?php the_excerpt(); ?></p>
             <a href="<?php the_permalink(); ?>" ><?php _e( 'Read Article', 'digitalnomad' ); ?></a> </div>
         </div>

@@ -7,6 +7,12 @@
  * @package Digital_Nomad
  */
 
+function digitalnomad_custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'digitalnomad_custom_excerpt_length', 999 );
+
+
 if ( ! function_exists( 'digitalnomad_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -204,13 +210,14 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-add_image_size( 'header_image', 840, 527,  array( 'top', 'center' )  );
-add_image_size( 'digitalnomad_slider', 1920, 1000,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_slider', 752, 500,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_half_banner', 1920, 560,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_full_banner', 1920, 1000,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_post_preview', 360, 278,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_related_posts', 285, 220,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_recent_posts', 58, 58,  array( 'top', 'center' ) );
+add_image_size( 'digitalnomad_single_product', 360, 460,  array( 'top', 'center' ) );
 
-
-/**
- * Load Jetpack compatibility file.
- */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
