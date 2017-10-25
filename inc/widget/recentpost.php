@@ -4,8 +4,8 @@ class Digitalnomad_WP_Widget_Recent_Posts extends WP_Widget
 	{
 		function __construct() 
 		{
-			$widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails",''), 'customize_selective_refresh' => true, );
-			parent::__construct('thirst-recent-posts', __('Digitalnomad Recent Posts',''), $widget_ops);
+			$widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( "The most recent posts on your site with thumbnails",'digitalnomad'), 'customize_selective_refresh' => true, );
+			parent::__construct('thirst-recent-posts', __('Digitalnomad Recent Posts','digitalnomad'), $widget_ops);
 			$this->alt_option_name = 'widget_recent_entries';
 
 			add_action( 'save_post', array($this, 'flush_widget_cache') );

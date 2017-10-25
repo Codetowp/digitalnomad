@@ -1,9 +1,9 @@
 <?php
 
-function numero_related_post() {
+function digitalnomad_related_post() {
 
 	$args = '';
-    $count = get_theme_mod( 'numero_blog_page_relative_count' );
+    $count = get_theme_mod( 'digitalnomad_related_post_number' );
       
 	$args = wp_parse_args( $args, array(
 		'category__in'   => wp_get_post_categories( get_the_ID() ),
@@ -43,12 +43,11 @@ function numero_related_post() {
                 $categories = get_the_category(' / ');
                 
                 
-				printf(
-                    
+				printf(                   
 					'<article class="col-md-4 col-sm-6 col-xs-12">
                         <header class="entry-header"> %s<a href="%s">
                             <h6>%s</h6>
-                        </a> %s</header>
+                        </a></header>
                     </article>',
 					$post_thumbnail,
                     esc_url( get_permalink() ),
