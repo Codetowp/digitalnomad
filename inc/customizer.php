@@ -17,8 +17,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
     $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
        
-    require get_template_directory() . '/inc/customizer-functions.php'; // Extra functions.
-	require get_template_directory() . '/inc/customizer-controls.php'; // Extra controls.
+   
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
 
@@ -224,7 +223,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 /*********Blog Section**********/
     
         $wp_customize->add_section('digitalnomad_blog_section', array(
-            'title'                     => __('Blog Section', 'digitalnomad'),
+            'title'                     => __('Post Settings', 'digitalnomad'),
             'description'               => 'Easily edit your header section',
             'priority'                  => 62,   
 
@@ -334,39 +333,47 @@ function digitalnomad_customize_register( $wp_customize ) {
             'type'    => 'radio',
             'choices' => array(
 					'half-height' => esc_html__( 'Half-Height', 'digitalnomad' ),
-					'full-height' => esc_html__( 'Full-Height', 'digitalnomad' ),
-				
+					'full-height' => esc_html__( 'Full-Height', 'digitalnomad' ),				
 			),
             'priority' => 3
         ) );
     
-        
-     $sanitize_layouts = new Digitalnomad_Sanitize_Select( array( 'disabled', 'none', 'left', 'right' ), 'disabled' );
-      
+/*        $left_value = array("col-md-push-4", "col-md-pull-8");
+        $right_value = array("", "");*/
+    
+         $wp_customize->add_setting( 'digitalnomad_sidebar_setting', array(
+            'default'        => 'half-height',
+        ) );
 
-    $wp_customize->add_setting( 'digitalnomad_sidebar_setting', array(
-		'default' => 'disabled',
-		'transport' => 'postMessage',
-		'sanitize_callback' => array( $sanitize_layouts, 'callback' ),
-	) );
-        $wp_customize->add_control( new Digitalnomad_Layout_Control( $wp_customize, 'digitalnomad_sidebar_setting', array(
-		'label' => __( 'Home', 'briar' ),
-		'section' => 'layouts',
-            'layouts' => array(
-			        'left' => array(
-                    'label' => __( 'Left', 'digitalnomad' ),
-                ),
-                'right' => array(
-                    'label' => __( 'Right', 'digitalnomad' ),
-                ),
-		),
+        $wp_customize->add_control( 'digitalnomad_sidebar_setting', array(
+            'label'   => 'Radio Setting',
+            'section' => 'layouts',
+            'type'    => 'radio',
+            'choices' => array(
+					'left' =>  esc_html__( 'Sidebar left', 'digitalnomad' ),
+					'right' =>  esc_html__( 'Sidebar right', 'digitalnomad' ),				
+			),
             'priority' => 3
-        ) ) );
-    
-    
+        ) );
     
 }
 add_action( 'customize_register', 'digitalnomad_customize_register' );
+
+
+/**
+ * Adds sanitization callback function: Sidebar Layout
+ * @package digitalnomad
+ */
+function digitalnomad_sanitize_layout( $input ) {
+    global $site_layout;
+    if ( array_key_exists( $input, $site_layout ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+}
+
+
 
 /**
  * Render the site title for the selective refresh partial.
@@ -426,7 +433,6 @@ if ( ! function_exists( 'digitalnomad_sanitize_checkbox' ) )
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function digitalnomad_customize_preview_js() {
-    //wp_enqueue_script( 'digitalnomad_lessjs', get_template_directory_uri() . '/admin/js/briar-less.js', array(), '2.5.1', true );
 	wp_enqueue_script( 'digitalnomad-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'digitalnomad_customize_preview_js' );

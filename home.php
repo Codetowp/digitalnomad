@@ -73,21 +73,21 @@ get_header(); ?>
 </section>
 <?php endif;?>
 <!--/Home banner--> 
-
+<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>
 <!--Home content-->
 <section id="home-content">
 	<div class="container">
 		<div class="row"> 
 			<!--content body-->
-			<div class="col-md-8">
+			<div class="col-md-8 content-layout-set">
                 <?php
-               get_theme_mod( 'digitalnomad_slider_disable' );
-                     $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
-                        if ( digitalnomad_is_selective_refresh() ) 
-                        {
-                            $disable = false;
-                        }
-                        if (  !$disable) :
+                get_theme_mod( 'digitalnomad_slider_disable' );
+                $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
+                if ( digitalnomad_is_selective_refresh() ) 
+                {
+                    $disable = false;
+                }
+                if (  !$disable) :
                 ?>
                 <article> 
                     <!--Article slider-->
@@ -152,7 +152,7 @@ get_header(); ?>
 			<!--/content body--> 
 			
 			<!--aside-->
-			<aside class="col-md-4 col-sm-4" > 
+			<aside class="col-md-4 col-sm-4 aside-layout-set" > 
                 <?php get_sidebar();?>
 			</aside>
 			<!--aside--> 
