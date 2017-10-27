@@ -73,9 +73,11 @@ get_header(); ?>
 </section>
 <?php endif;?>
 <!--/Home banner--> 
-<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>
+
 <!--Home content-->
-<section id="home-content">
+<section id="home-content" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
+
+  
 	<div class="container">
 		<div class="row"> 
 			<!--content body-->

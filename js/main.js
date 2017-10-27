@@ -90,47 +90,19 @@ function main() {
 
   	/*====================================
  layout -left and right
-    ======================================*/	
+    ======================================*/		
+
+
+$(document).ready(function () {
+
+	if($('#home-content').hasClass('right-radio')) {
+  $('.content-layout-set').addClass('col-md-push-4');
+   $('.aside-layout-set').addClass('col-md-pull-8');
+}
 	
-	
-	
-		//$(document).ready(function(){
-//
-//            $('.customize-control-radio input[value="left"]:radio').click(function(){
-//                 if($(this).is(":checked")) {
-//                     $('.content-layout-set').addClass('col-md-push-4');
-//                } else if($(this).is(".customize-control-radio input[value='left']:not(:checked)")) {
-//                     $('.content-layout-set').removeClass('col-md-push-4');
-//                }
-//				
-//				if($(this).is(":checked")) {
-//                     $('.aside-layout-set').addClass('col-md-pull-8');
-//                } else if($(this).is(".customize-control-radio input[value='left']:not(:checked)")) {
-//                     $('.aside-layout-set').removeClass('col-md-pull-8');
-//                }
-//				
-//            });
-//        
-//        });
-//		
-//		
-//		$(document).ready(function(){
-//
-//            $('.customize-control-radio input[value="right"]:radio').click(function(){
-//                 if($(this).is(":checked")) {
-//                     $('.content-layout-set').removeClass('col-md-push-4');
-//				 }
-//				
-//				if($(this).is(":checked")) {
-//                     $('.aside-layout-set').removeClass('col-md-pull-8');
-//               
-//                }
-//				
-//            });
-//        
-//        });
-//  
-//
+});
+  
+
 
 	/*====================================
     top -menu
