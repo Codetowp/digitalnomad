@@ -28,7 +28,7 @@ get_header(); ?>
 ?>
 
 <!--Home banner-->
-<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="half-height">
+<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
 	<div class="content">
 		<div class="container wow fdeInUp"  data-wow-duration="1s">
 			<div class="row">
@@ -73,21 +73,21 @@ get_header(); ?>
 </section>
 <?php endif;?>
 <!--/Home banner--> 
-
+<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>
 <!--Home content-->
 <section id="home-content">
 	<div class="container">
 		<div class="row"> 
 			<!--content body-->
-			<div class="col-md-8">
+			<div class="col-md-8 content-layout-set">
                 <?php
-               get_theme_mod( 'digitalnomad_slider_disable' );
-                     $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
-                        if ( digitalnomad_is_selective_refresh() ) 
-                        {
-                            $disable = false;
-                        }
-                        if (  !$disable) :
+                get_theme_mod( 'digitalnomad_slider_disable' );
+                $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
+                if ( digitalnomad_is_selective_refresh() ) 
+                {
+                    $disable = false;
+                }
+                if (  !$disable) :
                 ?>
                 <article> 
                     <!--Article slider-->
@@ -152,7 +152,7 @@ get_header(); ?>
 			<!--/content body--> 
 			
 			<!--aside-->
-			<aside class="col-md-4 col-sm-4" > 
+			<aside class="col-md-4 col-sm-4 aside-layout-set" > 
                 <?php get_sidebar();?>
 			</aside>
 			<!--aside--> 

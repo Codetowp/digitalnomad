@@ -16,8 +16,8 @@ function digitalnomad_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
     
     $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
-        
- require get_template_directory() . '/inc/customizer-controls.php';
+       
+   
 	require get_template_directory() . '/inc/lib/fo-to-range.php';
 
 
@@ -223,7 +223,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 /*********Blog Section**********/
     
         $wp_customize->add_section('digitalnomad_blog_section', array(
-            'title'                     => __('Blog Section', 'digitalnomad'),
+            'title'                     => __('Post Settings', 'digitalnomad'),
             'description'               => 'Easily edit your header section',
             'priority'                  => 62,   
 
@@ -317,9 +317,63 @@ function digitalnomad_customize_register( $wp_customize ) {
 			) );
 		}
     
+    /*layout*/
+    $wp_customize->add_section( 'layouts', array(
+		'title' => __( 'Layouts', 'digitalnomad' ),
+		'priority' => 115,
+	) );
+    
+      $wp_customize->add_setting( 'digitalnomad_banner_setting', array(
+            'default'        => 'half-height',
+        ) );
+
+        $wp_customize->add_control( 'digitalnomad_banner_setting', array(
+            'label'   => 'Radio Setting',
+            'section' => 'layouts',
+            'type'    => 'radio',
+            'choices' => array(
+					'half-height' => esc_html__( 'Half-Height', 'digitalnomad' ),
+					'full-height' => esc_html__( 'Full-Height', 'digitalnomad' ),				
+			),
+            'priority' => 3
+        ) );
+    
+/*        $left_value = array("col-md-push-4", "col-md-pull-8");
+        $right_value = array("", "");*/
+    
+         $wp_customize->add_setting( 'digitalnomad_sidebar_setting', array(
+            'default'        => 'half-height',
+        ) );
+
+        $wp_customize->add_control( 'digitalnomad_sidebar_setting', array(
+            'label'   => 'Radio Setting',
+            'section' => 'layouts',
+            'type'    => 'radio',
+            'choices' => array(
+					'left' =>  esc_html__( 'Sidebar left', 'digitalnomad' ),
+					'right' =>  esc_html__( 'Sidebar right', 'digitalnomad' ),				
+			),
+            'priority' => 3
+        ) );
     
 }
 add_action( 'customize_register', 'digitalnomad_customize_register' );
+
+
+/**
+ * Adds sanitization callback function: Sidebar Layout
+ * @package digitalnomad
+ */
+function digitalnomad_sanitize_layout( $input ) {
+    global $site_layout;
+    if ( array_key_exists( $input, $site_layout ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+}
+
+
 
 /**
  * Render the site title for the selective refresh partial.
@@ -349,6 +403,21 @@ function digitalnomad_sanitize_slidecat( $input ) {
 }
 
 
+if ( ! function_exists( 'digitalnomad_sanitize_checkbox' ) ) 
+	{
+		function digitalnomad_sanitize_checkbox( $input ) 
+		{
+			if ( $input == 1 ) 
+			{
+				return 1;
+			} 
+			else 
+			{
+				return 0;
+			}
+		}
+	}
+
 	function digitalnomad_sanitize_integer( $input ) {
 		if( is_numeric( $input ) ) {
 			return intval( $input );
@@ -367,6 +436,3 @@ function digitalnomad_customize_preview_js() {
 	wp_enqueue_script( 'digitalnomad-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'digitalnomad_customize_preview_js' );
-
-
-
