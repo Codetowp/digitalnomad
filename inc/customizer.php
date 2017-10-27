@@ -176,7 +176,7 @@ function digitalnomad_customize_register( $wp_customize ) {
                 'settings' => 'digitalnomad_slider_disable',
                 'label'    => __( 'Disable Slider Section?', 'digitalnomad' ),
                 'section'  => 'digitalnomad_slider_options',
-                'type'     => 'ios',
+                'type'     => 'toggle',
                 'priority' => 1,
 
         ) ) );
