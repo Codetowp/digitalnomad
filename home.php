@@ -70,13 +70,12 @@ get_header(); ?>
 <!--/Home banner--> 
 
 <!--Home content-->
-<section id="home-content" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
+<section id="home-content-layout" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
   <div class="container">
     <div class="row"> 
       <!--content body-->
       <div class="col-md-8 content-layout-set">
-        <?php
-                get_theme_mod( 'digitalnomad_slider_disable' );
+        <?php                get_theme_mod( 'digitalnomad_slider_disable' );
                 $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
                 if ( digitalnomad_is_selective_refresh() ) 
                 {
@@ -84,44 +83,38 @@ get_header(); ?>
                 }
                 if (  !$disable) :
                 ?>
-        <article> 
-          <!--Article slider-->
-          <div id="article-slider" class="owl-carousel owl-theme">
-            <?php  digitalnomad_featured_slider(); ?>
-          </div>
-          <!--/Article slider--> 
-        </article>
-        <?php endif;?>
         
-        <!--blog section-->
-        <?php
-                     $disable    = get_theme_mod( 'digitalnomad_blog_disable' ) == 1 ? true : false ;
-                        if ( digitalnomad_is_selective_refresh() ) 
-                        {
-                            $disable = false;
-                        }
-                        if ( ! $disable) :
-                ?>
-        <?php 
+                <article> 
+                    <!--Article slider-->
+                    <div id="article-slider" class="owl-carousel owl-theme"> 
+                        
+                        <?php  digitalnomad_featured_slider(); ?>        
+
+                    </div>
+                    <!--/Article slider--> 
+                </article>
+                <?php endif;?>
+
+                <!--blog section-->
+                <?php 
                         $count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
                         $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
                         if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 
-                            get_template_part( 'template-parts/content', get_post_format() );
+                            get_template_part( 'template-parts/content', '' );
 
                     endwhile;endif;
                     wp_reset_postdata(); 
                 ?>
-        <?php endif;?>
-        
-        <!--/blog section-->
-        
-        <div class="clearfix"></div>
-        <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
-          <ul>
-            <li>
-              <?php
+                <!--/blog section-->
+      
+				<div class="clearfix"></div>
+				
+                <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
+					<ul>
+						<li>
+							<?php
 							the_posts_pagination(
 								array(
 									'prev_text' => '<i class="fa fa-chevron-left"></i>' . __( 'Newer posts', 'digitalnomad' ),

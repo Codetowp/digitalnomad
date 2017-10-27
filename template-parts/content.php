@@ -26,7 +26,7 @@
         
         <?php $categories = get_the_category(); ?>
 
-        <div class="home-article-content col-md-6"> 
+        <div class="home-article-content col-md-6" style="padding-top:0"> 
               
             <?php digitalnomad_entry_category(); ?>
 
