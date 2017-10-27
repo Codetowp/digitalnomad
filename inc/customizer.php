@@ -321,6 +321,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     
          $wp_customize->add_setting( 'digitalnomad_sidebar_setting', array(
             'default'        => 'half-height',
+			
         ) );
 
         $wp_customize->add_control( 'digitalnomad_sidebar_setting', array(
@@ -328,8 +329,8 @@ function digitalnomad_customize_register( $wp_customize ) {
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(
-					'left' =>  esc_html__( 'Sidebar left', 'digitalnomad' ),
-					'right' =>  esc_html__( 'Sidebar right', 'digitalnomad' ),				
+					'left-radio' =>  esc_html__( 'Sidebar left', 'digitalnomad' ),
+					'right-radio' =>  esc_html__( 'Sidebar right', 'digitalnomad' ),				
 			),
             'priority' => 3
         ) );
