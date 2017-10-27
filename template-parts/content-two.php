@@ -7,9 +7,9 @@
  * @package numero
  */
 ?>
- <article class="col-md-6 no-padding" >
+ <article class="col-md-6 no-padding">
     <header class="entry-header">
-        <div class="col-md-12  "> 
+        <div class="col-md-12"> 
              <?php
                 if  ( get_the_post_thumbnail()!='')
                 {

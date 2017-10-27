@@ -24,18 +24,18 @@ get_header(); ?>
         if ( ! $disable) :
 ?>
 <!--Home banner-->
-<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="half-height">
-	<div class="content">
-		<div class="container wow fdeInUp"  data-wow-duration="1s">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3"> 
-					<!--Head content--> 
-					<?php 
+
+<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
+  <div class="content">
+    <div class="container wow fdeInUp"  data-wow-duration="1s">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3"> 
+          <!--Head content-->
+          <?php 
 						$nomad_tagline  = get_theme_mod( 'digitalnomad_header_tag_line', esc_html__(' HEY I’M RIJO ABRAHAM', 'digitalnomad' ));
 						if ($nomad_tagline != '') echo '<span>  ' . wp_kses_post($nomad_tagline) . ' </span>'; 
 					?>
-
-					<?php 
+          <?php 
 						$nomad_theme_title  = get_theme_mod( 'digitalnomad_header_text', esc_html__(' DIGITAL NOMAD', 'digitalnomad' ));
 						if ($nomad_theme_title != '') echo '<h1>  ' . wp_kses_post($nomad_theme_title) . ' </h1>'; 
 					?> 
@@ -68,20 +68,20 @@ get_header(); ?>
 <?php endif;?>
 <!--/Home banner--> 
 <!--Home content-->
-<section id="home-content">
-	<div class="container">
-		<div class="row"> 
-			<!--content body-->
-			<div class="col-md-8">
-                <?php
-					get_theme_mod( 'digitalnomad_slider_disable' );
-                    $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
-                        if ( digitalnomad_is_selective_refresh() ) 
-                        {
-                            $disable = false;
-                        }
-                        if (  !$disable) :
+<section id="home-content-layout" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
+  <div class="container">
+    <div class="row"> 
+      <!--content body-->
+      <div class="col-md-8 content-layout-set">
+        <?php                get_theme_mod( 'digitalnomad_slider_disable' );
+                $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
+                if ( digitalnomad_is_selective_refresh() ) 
+                {
+                    $disable = false;
+                }
+                if (  !$disable) :
                 ?>
+        
                 <article> 
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
@@ -91,27 +91,19 @@ get_header(); ?>
                 </article>
                 <?php endif;?>
                 <!--blog section-->
-                 <?php
-                    $disable    = get_theme_mod( 'digitalnomad_blog_disable' ) == 1 ? true : false ;
-					if ( digitalnomad_is_selective_refresh() ) 
-					{
-						$disable = false;
-					}
-					if ( ! $disable) :
-                ?>
                 <?php 
 					$count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
 					$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
-					if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
-
-						get_template_part( 'template-parts/content', get_post_format() );
+           if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+						$home_layouts = get_theme_mod('digitalnomad_home_layouts');
+                            get_template_part( 'template-parts/content', $home_layouts );
 
                     endwhile;endif;
                     wp_reset_postdata(); 
                 ?>
-                <?php endif;?>
                 <!--/blog section-->
+      
 				<div class="clearfix"></div>
                 <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
 					<ul>
@@ -124,20 +116,22 @@ get_header(); ?>
 								)
 							);
 							?>
-							<?php wp_reset_postdata(); ?>
-						</li>   
-					</ul>
-				</nav>
-			</div>
-			<!--/content body--> 
-			<!--aside-->
-			<aside class="col-md-4 col-sm-4" > 
-                <?php get_sidebar();?>
-			</aside>
-			<!--aside--> 
-		</div>
-	</div>
+              <?php wp_reset_postdata(); ?>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!--/content body--> 
+      
+      <!--aside-->
+      <aside class="col-md-4 col-sm-4 aside-layout-set" >
+        <?php get_sidebar();?>
+      </aside>
+      <!--aside--> 
+    </div>
+  </div>
 </section>
-<!--/Home content--> 
+<!--/Home content-->
 <?php
 get_footer();
+

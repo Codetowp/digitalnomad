@@ -88,7 +88,19 @@ function main() {
     })
 
 
-  	
+  	/*====================================
+ layout -left and right
+    ======================================*/		
+
+
+$(document).ready(function () {
+
+	if($('#home-content').hasClass('right-radio')) {
+  $('.content-layout-set').addClass('col-md-push-4');
+   $('.aside-layout-set').addClass('col-md-pull-8');
+}
+	
+});
   
 
 

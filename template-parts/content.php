@@ -22,7 +22,7 @@
 				}   ?>
         </div>            
         <?php $categories = get_the_category(); ?>
-        <div class="home-article-content col-md-6"> 
+        <div class="home-article-content col-md-6" style="padding-top:0"> 
             <?php digitalnomad_entry_category(); ?>
             <?php digitalnomad_posted_on(); ?>
             <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
