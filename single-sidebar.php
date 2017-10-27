@@ -10,32 +10,23 @@
  */
 
 get_header(); ?>
-
-
 <!--body content-->
-
 <div id="Blog-post"> 
-    <!-- banner Page add class for bottom entry header{entry-header-bottom} instead of entry-header
-    ==========================================-->
-    
-   
-<?php
+	<?php
 		if(have_posts()):		  
-		while ( have_posts() ) : the_post();
- 
-?> 
-    
-    <header class="entry-header-bottom" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
-        <div class="content  wow fadeInUp">
-            <div class="container "> 
-                <div class="head-tag"><?php digitalnomad_entry_category(); ?></div>
-                <h1><?php the_title(); ?> </h1>
-                <a href="#"> </a><span class="date-article"><?php  digitalnomad_posted_on();?></span>  
-            </div>
-        </div>
-    </header>
-    <?php endwhile;endif;?>
-    <div class="container">
+			while ( have_posts() ) : the_post();
+	?> 
+	<header class="entry-header-bottom" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
+		<div class="content  wow fadeInUp">
+			<div class="container "> 
+				<div class="head-tag"><?php digitalnomad_entry_category(); ?></div>
+				<h1><?php the_title(); ?> </h1>
+				<a href="#"> </a><span class="date-article"><?php  digitalnomad_posted_on();?></span>  
+			</div>
+		</div>
+	</header>
+	<?php endwhile;endif;?>
+		<div class="container">
         <div class="row wow fadeInUp"> 
             <!--blog posts container-->
             <div class="col-md-8 col-md-offset-0 col-sm-12 single-post">
@@ -57,8 +48,5 @@ get_header(); ?>
         </div>
     </div>
 </div>
-
-
 <?php
-
 get_footer();

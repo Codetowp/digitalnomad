@@ -19,27 +19,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
 get_header( 'shop' ); ?>
-
-
-
-
-
- <!-- banner Page
+<!-- banner Page
     ==========================================-->
-
 <div id="page-banner-others" style="background-image: url(<?php header_image(); ?>);">
-  <div class="content  wow fdeInUp">
-    <div class="container ">
-      <h1><?php woocommerce_page_title(); ?></h1>
-    </div>
-  </div>
+	<div class="content  wow fdeInUp">
+		<div class="container ">
+			<h1><?php woocommerce_page_title(); ?></h1>
+		</div>
+	</div>
 </div>
-
 <!--woocommerce body-->
-
-
 <section id="woocommerce-page">
   <div class="container">
     <div class="row">
@@ -105,9 +95,6 @@ get_header( 'shop' ); ?>
 				
 		
 	</div>
-
-
-
 </div>
 </div>
 </section>
