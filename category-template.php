@@ -3,13 +3,11 @@ function get_the_category( $id = false ) {
     $categories = get_the_terms( $id, 'category' );
     if ( ! $categories || is_wp_error( $categories ) )
         $categories = array();
- 
-    $categories = array_values( $categories );
- 
-    foreach ( array_keys( $categories ) as $key ) {
-        _make_cat_compat( $categories[$key] );
-    }
- 
+		$categories = array_values( $categories );
+		foreach ( array_keys( $categories ) as $key ) 
+		{
+			_make_cat_compat( $categories[$key] );
+		}
     /**
      * Filters the array of categories to return for a post.
      *

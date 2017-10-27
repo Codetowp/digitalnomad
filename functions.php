@@ -6,13 +6,10 @@
  *
  * @package Digital_Nomad
  */
-
 function digitalnomad_custom_excerpt_length( $length ) {
 	return 20;
 }
 add_filter( 'excerpt_length', 'digitalnomad_custom_excerpt_length', 999 );
-
-
 if ( ! function_exists( 'digitalnomad_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -32,7 +29,6 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -40,7 +36,6 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
-
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
@@ -52,7 +47,6 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'digitalnomad' ),
 		) );
-        
         register_nav_menus( array(
 			'footer-menu' => esc_html__( 'Footer', 'digitalnomad' ),
 		) );
@@ -67,16 +61,13 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 			'gallery',
 			'caption',
 		) );
-
 		// Set up the WordPress core custom background feature.
 		add_theme_support( 'custom-background', apply_filters( 'digitalnomad_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
-
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
-
 		/**
 		 * Add support for core custom logo.
 		 *
@@ -120,8 +111,7 @@ function digitalnomad_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
     
-   register_sidebar( 
-    array(
+   register_sidebar( array(
         'name'          => esc_html__( 'Social', 'digitalnomad' ),
         'id'            => 'social',
         'description'   => esc_html__( 'Add widgets here.', 'digitalnomad' ),
@@ -181,7 +171,6 @@ function digitalnomad_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'digitalnomad_scripts' );
 
-
 /* Globals variables */
 global $options_categories;
 	$options_categories = array();
@@ -189,8 +178,6 @@ global $options_categories;
 	foreach ($options_categories_obj as $category) {
        $options_categories[$category->cat_ID] = $category->cat_name;
 	}
-
-
 /**
  * Implement the Custom Header feature.
  */
