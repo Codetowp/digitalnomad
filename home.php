@@ -82,7 +82,7 @@ get_header(); ?>
                 if (  !$disable) :
                 ?>
         
-                <article> 
+                <article class="col-md-12 no-padding"> 
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
                         <?php  digitalnomad_featured_slider(); ?>        
