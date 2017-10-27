@@ -334,6 +334,26 @@ function digitalnomad_customize_register( $wp_customize ) {
 			),
             'priority' => 3
         ) );
+		
+		$wp_customize->add_setting( 'digitalnomad_home_layouts', array(
+            'default'        => 'half-height',
+			
+        ) );
+        $wp_customize->add_control( 'digitalnomad_home_layouts', array(
+            'label'   => 'Radio Setting',
+            'section' => 'layouts',
+            'type'    => 'radio',
+            'choices' => array(
+					'default' 	=>  esc_html__( 'Default layout', 'digitalnomad' ),
+					'two' 		=>  esc_html__( 'Two Layout', 'digitalnomad' ),
+					'classic' 	=>  esc_html__( 'Classic Layout', 'digitalnomad' ),				
+					
+			),
+            'priority' => 3
+        ) );
+		
+		
+		
     
 }
 add_action( 'customize_register', 'digitalnomad_customize_register' );
