@@ -36,7 +36,6 @@ get_header();
                         <?php 
                             endwhile;endif;
                             wp_reset_postdata(); ?>
-
                         <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
                             <ul>
                                 <li>

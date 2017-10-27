@@ -8,7 +8,6 @@
  *
  * @package Digital_Nomad
  */
-
 ?>
 <!--/*footer*/-->
 <footer class="footer-bottom">
@@ -18,7 +17,6 @@
 				$custom_logo = get_theme_mod( 'custom_logo' );
 				$logo = wp_get_attachment_image_src( $custom_logo , 'full' );
                 $logo_img_static   = get_template_directory_uri()."";
-
 				if ( has_custom_logo() ) 
 				{
 					$img='<img src="'. esc_url( $logo[0] ) .'" >';

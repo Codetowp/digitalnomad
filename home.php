@@ -11,13 +11,11 @@
  *
  * @package Digital_Nomad
  */
-
 get_header(); ?>
 <?php
     $background_img   = esc_url( get_theme_mod( 'header_background_image' ) );   
     $background_img_static   = get_template_directory_uri()."/img/bg-1.jpg";
     $image = $background_img ? "$background_img" : "$background_img_static";   
- 
     $disable    = get_theme_mod( 'digitalnomad_disable' ) == 1 ? true : false ;
         if ( digitalnomad_is_selective_refresh() ) 
         {
@@ -25,7 +23,6 @@ get_header(); ?>
         }
         if ( ! $disable) :
 ?>
-
 <!--Home banner-->
 
 <section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
@@ -41,34 +38,35 @@ get_header(); ?>
           <?php 
 						$nomad_theme_title  = get_theme_mod( 'digitalnomad_header_text', esc_html__(' DIGITAL NOMAD', 'digitalnomad' ));
 						if ($nomad_theme_title != '') echo '<h1>  ' . wp_kses_post($nomad_theme_title) . ' </h1>'; 
-					?>
-          <!--/Head content--> 
-          
-          <!--Head social-->
-          <ul class="head-social-link">
-            <?php
+					?> 
+					<!--/Head content--> 
+					<!--Head social-->
+					<ul class="head-social-link">
+						<?php
 							if ( $socials = get_theme_mod( 'social' ) ) 
-								{
-									$socials = $socials ? array_filter( $socials ) : array();
-									foreach ( $socials as $social => $name ) 
-										{
-											printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html($social) );
-										}
-								}
+							{
+								$socials = $socials ? array_filter( $socials ) : array();
+								foreach ( $socials as $social => $name ) 
+									{
+										printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html($social) );
+									}
+							}
 						?>
-          </ul>
-          <!--/Head social--> 
-          
-          <a href="<?php echo  $button1_url=( get_theme_mod( 'digitalnomad_header_button_url' ) )?
-						( esc_url(get_theme_mod( 'digitalnomad_header_button_url' )) ):'#'; ?>" class="btn-white btn" > <?php echo  $button_text=( get_theme_mod( 'digitalnomad_header_button_text' ) )?
-						esc_html((get_theme_mod( 'digitalnomad_header_button_text' ) )):'Hire me'; ?> </a> </div>
-      </div>
-    </div>
-  </div>
+					</ul>
+					<!--/Head social--> 
+					<a href="<?php echo  $button1_url=( get_theme_mod( 'digitalnomad_header_button_url' ) )?
+						( esc_url(get_theme_mod( 'digitalnomad_header_button_url' )) ):'#'; ?>" class="btn-white btn" >
+
+						<?php echo  $button_text=( get_theme_mod( 'digitalnomad_header_button_text' ) )?
+						esc_html((get_theme_mod( 'digitalnomad_header_button_text' ) )):'Hire me'; ?>
+					</a> 
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <?php endif;?>
 <!--/Home banner--> 
-
 <!--Home content-->
 <section id="home-content-layout" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
   <div class="container">
@@ -87,20 +85,17 @@ get_header(); ?>
                 <article> 
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
-                        
                         <?php  digitalnomad_featured_slider(); ?>        
-
                     </div>
                     <!--/Article slider--> 
                 </article>
                 <?php endif;?>
-
                 <!--blog section-->
                 <?php 
-                        $count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
-                        $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+					$count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
+					$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
-                        if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
+           if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 						$home_layouts = get_theme_mod('digitalnomad_home_layouts');
                             get_template_part( 'template-parts/content', $home_layouts );
 
@@ -110,7 +105,6 @@ get_header(); ?>
                 <!--/blog section-->
       
 				<div class="clearfix"></div>
-				
                 <nav class="navigation posts-navigation  wow fadeInUp"  role="navigation">
 					<ul>
 						<li>
@@ -138,7 +132,6 @@ get_header(); ?>
   </div>
 </section>
 <!--/Home content-->
-
 <?php
 get_footer();
 

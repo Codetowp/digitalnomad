@@ -21,15 +21,10 @@
                     <?php 
                 }   ?>
         </div>            
-        
         <?php $categories = get_the_category(); ?>
-
         <div class="home-article-content col-md-12">
-              
             <?php digitalnomad_entry_category(); ?>
-
             <?php digitalnomad_posted_on(); ?>
-            
             <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
             <span class="byline"> By <span class="author vcard"><?php the_author_posts_link(); ?></span></span>
             <p><?php the_excerpt(); ?>

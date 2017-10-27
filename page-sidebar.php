@@ -12,9 +12,7 @@
  *
  * @package Digital_Nomad
  */
-
 get_header(); ?>
-
 <!-- banner Page
     ==========================================-->
 <div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('digitalnomad_full_banner'); ?>);">
@@ -24,11 +22,7 @@ get_header(); ?>
         </header>
     </div>
 </div>
-
-
-
 <!--body content-->
-
 <div id="page-body"> 
     <div class="container">
         <div class="row wow fadeInUp">       
@@ -38,17 +32,13 @@ get_header(); ?>
                         while ( have_posts() ) : the_post();
                 ?>
                 <p><?php the_content();?></p>       
-                
                 <?php endwhile;endif;?>   
-                
             </div>
                <aside class="col-md-4 col-sm-4" >
                 <?php get_sidebar(); ?>
             </aside>  
         </div>
-       
     </div>
 </div>
-
 <?php
 get_footer();

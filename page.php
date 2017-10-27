@@ -14,7 +14,6 @@
  */
 
 get_header(); ?>
-
 <!-- banner Page
     ==========================================-->
 <div id="page-banner" style="background-image: url(<?php echo the_post_thumbnail_url('digitalnomad_full_banner'); ?>);">
@@ -24,7 +23,6 @@ get_header(); ?>
         </header>   
     </div>
 </div>
-
 <div id="page-body"> 
     <div class="container">
         <div class="row wow fadeInUp"> 
@@ -33,15 +31,14 @@ get_header(); ?>
                     if(have_posts()):
                         while ( have_posts() ) : the_post();
                 ?>
-                
-                <p><?php the_content();?></p>               
-                
+                <p>
+					<?php the_content();?>
+				</p>               
                 <?php endwhile;endif;?>      
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
 </div>
-
 <?php
 get_footer();
