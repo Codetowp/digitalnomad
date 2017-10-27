@@ -101,8 +101,8 @@ get_header(); ?>
                         $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
                         if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
-
-                            get_template_part( 'template-parts/content', '' );
+						$home_layouts = get_theme_mod('digitalnomad_home_layouts');
+                            get_template_part( 'template-parts/content', $home_layouts );
 
                     endwhile;endif;
                     wp_reset_postdata(); 
