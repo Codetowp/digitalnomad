@@ -229,29 +229,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 
         ));
     
-    
-        /********* blog Disable **********/
-    
-        $wp_customize->add_setting( 'digitalnomad_blog_disable', array(
-                'sanitize_callback' => 'digitalnomad_sanitize_checkbox',
-                'default'           => '',
-                'capability'        => 'manage_options',
-                'transport'         => 'refresh',
-            )
-        );
-    
-        
-        $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, 'digitalnomad_blog_disable', array(
-                'settings' => 'digitalnomad_blog_disable',
-                'label'    => __( 'Disable Blog Section?', 'digitalnomad' ),
-                'type'     => 'ios',
-                'priority' => 1,
-
-        ) ) );
- 
-    
-    
-    
+      
         $wp_customize->add_setting( 'digitalnomad_blog_section_count', array(
             'default'                   => esc_html__('3','digitalnomad'),
             'sanitize_callback'         => 'digitalnomad_sanitize_integer'

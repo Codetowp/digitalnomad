@@ -75,7 +75,7 @@ get_header(); ?>
 <!--/Home banner--> 
 <?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>
 <!--Home content-->
-<section id="home-content">
+<section id="home-content-layout">
 	<div class="container">
 		<div class="row"> 
 			<!--content body-->
@@ -101,28 +101,18 @@ get_header(); ?>
                 <?php endif;?>
 
                 <!--blog section-->
-                 <?php
-                     $disable    = get_theme_mod( 'digitalnomad_blog_disable' ) == 1 ? true : false ;
-                        if ( digitalnomad_is_selective_refresh() ) 
-                        {
-                            $disable = false;
-                        }
-                        if ( ! $disable) :
-                ?>
-                
                 <?php 
                         $count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
                         $query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
 
                         if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 
-                            get_template_part( 'template-parts/content', get_post_format() );
+                            get_template_part( 'template-parts/content', '' );
 
                     endwhile;endif;
                     wp_reset_postdata(); 
                 ?>
-                <?php endif;?>
-
+ 
                 <!--/blog section-->
 
                 
