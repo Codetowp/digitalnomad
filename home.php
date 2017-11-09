@@ -26,60 +26,61 @@ get_header(); ?>
 <!--Home banner-->
 
 <section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
-  <div class="content">
-    <div class="container wow fdeInUp"  data-wow-duration="1s">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3"> 
-          <!--Head content-->
-          <?php 
-						$nomad_tagline  = get_theme_mod( 'digitalnomad_header_tag_line', esc_html__(' HEY I’M RIJO ABRAHAM', 'digitalnomad' ));
-						if ($nomad_tagline != '') echo '<span>  ' . wp_kses_post($nomad_tagline) . ' </span>'; 
-					?>
-          <?php 
-						$nomad_theme_title  = get_theme_mod( 'digitalnomad_header_text', esc_html__(' DIGITAL NOMAD', 'digitalnomad' ));
-						if ($nomad_theme_title != '') echo '<h1>  ' . wp_kses_post($nomad_theme_title) . ' </h1>'; 
-					?> 
-					<!--/Head content--> 
-					<!--Head social-->
-					<ul class="head-social-link">
-						<?php
-							if ( $socials = get_theme_mod( 'social' ) ) 
-							{
-								$socials = $socials ? array_filter( $socials ) : array();
-								foreach ( $socials as $social => $name ) 
-									{
-										printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html($social) );
-									}
-							}
-						?>
-					</ul>
-					<!--/Head social--> 
-					<a href="<?php echo  $button1_url=( get_theme_mod( 'digitalnomad_header_button_url' ) )?
-						( esc_url(get_theme_mod( 'digitalnomad_header_button_url' )) ):'#'; ?>" class="btn-white btn" >
+    <div class="content">
+        <div class="container wow fdeInUp"  data-wow-duration="1s">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3"> 
+                    <!--Head content-->
+                    <?php 
+                        $nomad_tagline  = get_theme_mod( 'digitalnomad_header_tag_line', esc_html__(' HEY I’M RIJO ABRAHAM', 'digitalnomad' ));
+                        if ($nomad_tagline != '') echo '<span>  ' . wp_kses_post($nomad_tagline) . ' </span>'; 
+                    ?>
+                    <?php 
+                        $nomad_theme_title  = get_theme_mod( 'digitalnomad_header_text', esc_html__(' DIGITAL NOMAD', 'digitalnomad' ));
+                        if ($nomad_theme_title != '') echo '<h1>  ' . wp_kses_post($nomad_theme_title) . ' </h1>'; 
+                    ?> 
+                    <!--/Head content--> 
+                    <!--Head social-->
+                    <ul class="head-social-link">
+                        <?php
+                            if ( $socials = get_theme_mod( 'social' ) ) 
+                                {
+                                    $socials = $socials ? array_filter( $socials ) : array();
+                                    foreach ( $socials as $social => $name ) 
+                                    {
+                                        printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_html($social) );
+                                    }
+                                }
+                        ?>
+                    </ul>
+                    <!--/Head social--> 
+                    <a href="<?php echo  $button1_url=( get_theme_mod( 'digitalnomad_header_button_url' ) )?
+                        ( esc_url(get_theme_mod( 'digitalnomad_header_button_url' )) ):'#'; ?>" class="btn-white btn" >
 
-						<?php echo  $button_text=( get_theme_mod( 'digitalnomad_header_button_text' ) )?
-						esc_html((get_theme_mod( 'digitalnomad_header_button_text' ) )):'Hire me'; ?>
-					</a> 
-				</div>
-			</div>
-		</div>
-	</div>
+                        <?php echo  $button_text=( get_theme_mod( 'digitalnomad_header_button_text' ) )?
+                        esc_html((get_theme_mod( 'digitalnomad_header_button_text' ) )):'Hire me'; ?>
+                    </a> 
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <?php endif;?>
 <!--/Home banner--> 
 <!--Home content-->
 <section id="home-content-layout" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
-  <div class="container">
-    <div class="row"> 
-      <!--content body-->
-      <div class="col-md-8 content-layout-set">
-        <?php                get_theme_mod( 'digitalnomad_slider_disable' );
-                $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
-                if ( digitalnomad_is_selective_refresh() ) 
-                {
-                    $disable = false;
-                }
-                if (  !$disable) :
+    <div class="container">
+        <div class="row"> 
+            <!--content body-->
+            <div class="col-md-8 content-layout-set">
+                <?php  
+                    get_theme_mod( 'digitalnomad_slider_disable' );
+                    $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
+                    if ( digitalnomad_is_selective_refresh() ) 
+                    {
+                        $disable = false;
+                    }
+                    if (  !$disable) :
                 ?>
         
                 <article> 
@@ -116,18 +117,17 @@ get_header(); ?>
 								)
 							);
 							?>
-              <?php wp_reset_postdata(); ?>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <!--/content body--> 
-      
-      <!--aside-->
-      <aside class="col-md-4 col-sm-4 aside-layout-set" >
-        <?php get_sidebar();?>
-      </aside>
-      <!--aside--> 
+                           <?php wp_reset_postdata(); ?>
+                        </li>
+                    </ul>
+                </nav>
+          </div>
+          <!--/content body--> 
+          <!--aside-->
+          <aside class="col-md-4 col-sm-4 aside-layout-set" >
+            <?php get_sidebar();?>
+          </aside>
+          <!--aside--> 
     </div>
   </div>
 </section>
