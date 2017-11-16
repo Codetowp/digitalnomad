@@ -71,6 +71,10 @@ get_header(); ?>
 		<?php comments_template(); ?>
 	</div>
 	<div class="clearfix"></div>
+	</div>
+	</div>
+	</div>
 </div>
+
 <?php
 get_footer();
