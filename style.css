@@ -4064,6 +4064,8 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
 	background: #2196f3;
 	color: #fff;
 	padding: 25px 0;
+    display: inline-block;
+    width: 100%;
 }
 .footer-bottom p {
 	color: #fff;
