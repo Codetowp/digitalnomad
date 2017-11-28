@@ -17,7 +17,7 @@ if ( ! function_exists( 'digitalnomad_entry_category' ) ) :
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'digitalnomad' ) );
+			$categories_list = get_the_category_list( esc_html__( ' ', 'digitalnomad' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
 				printf( '<span class="tag-details">' . esc_html__( '%1$s', 'digitalnomad' ) , $categories_list ); // WPCS: XSS OK.
