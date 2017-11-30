@@ -45,20 +45,12 @@
         <!--posts navigation-->
         <nav class="navigation posts-navigation"  role="navigation">
           <ul>
-          	<?php 
-					the_posts_pagination( array(
-						'prev_text' => '<i class="fa fa-chevron-left"></i>' . __( 'Newer posts', 'digitalnomad' ),
-						'next_text' => __( 'Older posts', 'digitalnomad' ) . '<i class="fa fa-chevron-right"></i>',
-						)
-					 );
-				?>
-				<?php wp_reset_postdata(); ?>
-            <!-- <li class="pull-left">
+            <li class="pull-left">
               <div class="nav-previous"><a href="http://localhost/wordpress/page/2/"><i class="fa fa-chevron-left"></i> Previous post</a></div>
             </li>
             <li class="pull-right">
               <div class="nav-next"><a href="http://localhost/wordpress/page/2/">Next post <i class="fa fa-chevron-right"></i></a></div>
-            </li> -->
+            </li>
           </ul>
         </nav>
         <!--/posts navigation-->
