@@ -274,7 +274,7 @@ function digitalnomad_customize_register( $wp_customize ) {
        /********* Footer Section **********/   
     
 		$wp_customize->add_section( 'social', array(
-			'title'    					=> __( '[digitalnomad]Footer Social', 'digitalnomad'  ),
+			'title'    					=> __( 'Social Links', 'digitalnomad'  ),
 			'priority'                  => 110,
 		
 		) );
@@ -307,7 +307,7 @@ function digitalnomad_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_control( 'digitalnomad_banner_setting', array(
-            'label'   => 'Radio Setting',
+            'label'   => 'Header Setting',
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(
@@ -326,11 +326,11 @@ function digitalnomad_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_control( 'digitalnomad_sidebar_setting', array(
-            'label'   => 'Radio Setting',
+            'label'   => 'Sidebar Setting',
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(
-					'left-radio' =>  esc_html__( 'Sidebar left', 'digitalnomad' ),
+					'col-md-8 pull-right'=>  esc_html__( 'Sidebar left', 'digitalnomad' ),
 					'right-radio' =>  esc_html__( 'Sidebar right', 'digitalnomad' ),				
 			),
             'priority' => 3
@@ -341,7 +341,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 			
         ) );
         $wp_customize->add_control( 'digitalnomad_home_layouts', array(
-            'label'   => 'Radio Setting',
+            'label'   => 'Posts Setting',
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(

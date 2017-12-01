@@ -576,3 +576,19 @@ p.no-comments {
 .widget_price_filter .ui-slider-horizontal .ui-slider-range {
 	height: 100%;
 }
+.woocommerce nav.woocommerce-pagination {
+    text-align: center;
+}
+.woocommerce ul.products li.product a img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 0 1em;
+    box-shadow: none;
+}
+.woocommerce .products ul, .woocommerce ul.products {
+    margin: 0 0 1em;
+    padding: 0;
+    list-style: none;
+    clear: both;
+}

@@ -46,15 +46,14 @@
 			<div class="col-md-12 social-nav">
 				<ul>
 					<?php
-						if ( $socials = get_theme_mod( 'social' ) ) 
+					if ( $socials = get_theme_mod( 'social' ) ) 
+					{
+						$socials = $socials ? array_filter( $socials ) : array();
+						foreach ( $socials as $social => $name ) 
 						{
-							$socials = $socials ? array_filter( $socials ) : array();
-							foreach ( $socials as $social => $name ) 
-							{
-								printf('<li><a href="%s" ><i class="fa fa-%s"></i></a></li> ', esc_url( $name ), esc_url($social) );
-							}
+						printf(' <li> <a href="%s" ><i class="fa fa-%s"></i></a> ', esc_url( $name ), esc_html($social) );
 						}
-					?>
+					}?>
 				</ul>
 			</div>
 			<!--/social nav--> 

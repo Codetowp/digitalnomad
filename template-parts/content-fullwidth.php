@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row wow fadeInUp"> 
             <!--blog posts container-->
-            <div class="col-md-8 col-md-offset-0 col-sm-12 single-post">
+            <div class="col-md-8 col-md-offset-0 col-sm-12 single-post<?php echo esc_html(get_theme_mod( 'digitalnomad_sidebar_setting' ));?>">
                 
                 <article class="post">
                     <p><?php the_content();?></p>

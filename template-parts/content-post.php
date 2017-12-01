@@ -73,7 +73,10 @@
       </div>
       <!--blog posts container--> 
         <!--aside-->
-      <aside class="col-md-4 col-sm-4 " > 
+               <?php 
+               $class= get_theme_mod( 'digitalnomad_sidebar_setting' );
+               ?>
+      <aside class="<?php if($class !== 'col-md-8 pull-right'): ?>col-md-4 col-sm-4 pull-right<?php else :?>col-md-4 col-sm-4 pull-left<?php endif;?>" > 
        <?php get_sidebar(); ?>
       </aside>
       <!--aside--> 
