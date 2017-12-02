@@ -2724,12 +2724,16 @@ embed, iframe, object {
 }
 #article-slider .article-slider-caption a {
 	font-size: 14px;
-	color: #2196f3;
+	color: #fff;
 	font-weight: 700;
 	text-transform: uppercase;
-	text-decoration: underline;
+	text-decoration: none;
 	margin-top: 25px;
 	display: block;
+}
+#article-slider .article-slider-caption a.slider-read{
+   color: #2196f3;
+   text-decoration:underline;
 }
 #article-slider .owl-controls {
 	position: absolute;
