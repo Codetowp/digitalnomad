@@ -74,14 +74,14 @@
 <?php wp_footer(); ?>
 <script>
   // Bind as an event handler
-$(document).on('click', '[data-lightbox]', lity);;
+jQuery(document).on('click', '[data-lightbox]', lity);;
 </script> 
 <script>
 new WOW().init();
 </script> 
 <script>
 // Bind as an event handler
-$(document).on('click', '[data-lightbox]', lity);
+jQuery(document).on('click', '[data-lightbox]', lity);
 </script>
 </body>
 </html>
