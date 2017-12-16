@@ -68,11 +68,11 @@ get_header(); ?>
 <?php endif;?>
 <!--/Home banner--> 
 <!--Home content-->
-<section id="home-content-layout" class="<?php echo get_theme_mod( 'digitalnomad_sidebar_setting' )?>">
+<section id="home-content-layout">
     <div class="container">
         <div class="row"> 
             <!--content body-->
-            <div class="col-md-8 content-layout-set">
+            <div class="col-md-8 content-layout-set <?php echo get_theme_mod( 'digitalnomad_sidebar_setting' );?>">
                 <?php  
                     get_theme_mod( 'digitalnomad_slider_disable' );
                     $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
@@ -83,7 +83,7 @@ get_header(); ?>
                     if (  !$disable) :
                 ?>
         
-                <article class="col-md-12 no-padding"> 
+                <article class="col-md-12 no-padding "> 
                     <!--Article slider-->
                     <div id="article-slider" class="owl-carousel owl-theme"> 
                         <?php  digitalnomad_featured_slider(); ?>        
@@ -124,7 +124,10 @@ get_header(); ?>
           </div>
           <!--/content body--> 
           <!--aside-->
-          <aside class="col-md-4 col-sm-4 aside-layout-set" >
+          <?php 
+           $class= get_theme_mod( 'digitalnomad_sidebar_setting' );
+           ?>
+          <aside class="<?php if($class !== 'col-md-8 pull-right'): ?>col-md-4 col-sm-4 aside-layout-set pull-right <?php else : ?>col-md-4 col-sm-4 aside-layout-set pull-left <?php endif; ?>" >
             <?php get_sidebar();?>
           </aside>
           <!--aside--> 

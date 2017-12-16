@@ -274,7 +274,7 @@ function digitalnomad_customize_register( $wp_customize ) {
        /********* Footer Section **********/   
     
 		$wp_customize->add_section( 'social', array(
-			'title'    					=> __( '[digitalnomad]Footer Social', 'digitalnomad'  ),
+			'title'    					=> __( 'Social Links', 'digitalnomad'  ),
 			'priority'                  => 110,
 		
 		) );
@@ -307,7 +307,7 @@ function digitalnomad_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_control( 'digitalnomad_banner_setting', array(
-            'label'   => 'Radio Setting',
+            'label'   => 'Header Setting',
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(
@@ -326,11 +326,11 @@ function digitalnomad_customize_register( $wp_customize ) {
         ) );
 
         $wp_customize->add_control( 'digitalnomad_sidebar_setting', array(
-            'label'   => 'Radio Setting',
+            'label'   => 'Sidebar Setting',
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(
-					'left-radio' =>  esc_html__( 'Sidebar left', 'digitalnomad' ),
+					'col-md-8 pull-right'=>  esc_html__( 'Sidebar left', 'digitalnomad' ),
 					'right-radio' =>  esc_html__( 'Sidebar right', 'digitalnomad' ),				
 			),
             'priority' => 3
@@ -341,7 +341,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 			
         ) );
         $wp_customize->add_control( 'digitalnomad_home_layouts', array(
-            'label'   => 'Radio Setting',
+            'label'   => 'Posts Setting',
             'section' => 'layouts',
             'type'    => 'radio',
             'choices' => array(
@@ -353,6 +353,98 @@ function digitalnomad_customize_register( $wp_customize ) {
             'priority' => 3
         ) );
 		
+    /*Fonts*/
+     
+    $wp_customize->add_section('digitalnomad_font_settings', 
+        array(
+            'title'                     => __('Font Settings', 'digitalnomad'),
+            'description'               => 'Change font family, size and color (Headings & Paragraph) for Homepage, Blog Posts & Pages.',
+            'priority'                  => 125,
+    ));
+
+    
+    // paragraph
+    $font_choices = customizer_library_get_font_choices();
+
+    $wp_customize->add_setting( 'digitalnomad_paragraph_font', array(
+        'default'        => 'PT Serif',
+    ) );
+
+    $wp_customize->add_control( 'digitalnomad_paragraph_font', array(
+        'label'   => esc_attr__('Pick Paragraph Font Family', 'digitalnomad' ),
+        'description'   => esc_attr__('Default : PT Serif', 'digitalnomad' ),
+        'section' => 'digitalnomad_font_settings',
+        'type'    => 'select',
+        'choices' => $font_choices,
+        'priority' => 1,
+    ));
+    
+    $wp_customize->add_setting( 'digitalnomad_paragraph_font_color', 
+        array(
+            'default' => '#43484d', 
+            'transport' => 'refresh', 
+            'sanitize_callback' => 'sanitize_hex_color', 
+        ) 
+    );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'digitalnomad_paragraph_font_color', 
+        array(
+            'label'      => esc_attr__( 'Pick Paragraph Font Color', 'digitalnomad' ),
+            'description'   => esc_attr__('Default : #43484d', 'digitalnomad' ),
+            'section'    => 'digitalnomad_font_settings',
+            'priority'   => 2,
+        ) 
+    ) );    
+
+    $wp_customize->add_setting( 'digitalnomad_paragraph_font_size', array(
+        'default'       => get_theme_mod( 'digitalnomad_paragraph_font_size', '16px' ),
+        'capability'    => 'edit_theme_options',
+        'transport'     => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new Customizer_Range_Value_Control( $wp_customize, 'digitalnomad_paragraph_font_size', array(
+        'type'     => 'range-value',
+        'section'  => 'digitalnomad_font_settings',
+        'settings' => 'digitalnomad_paragraph_font_size',        
+        'label'    => __( 'Pick Paragraph Font Size' , 'digitalnomad' ),
+        'description'   => esc_attr__('Default : 16px', 'digitalnomad' ),
+        'input_attrs' => array(
+        'min'    => 11,
+        'max'    => 24,
+        'step'   => 1,
+        'suffix' => 'px',
+        ),
+        'priority'   => 3,
+    ) ) );
+
+    /*Heading fonts */
+       
+    $wp_customize->add_setting( 'digitalnomad_heading_font_family', array(
+        'default'        => 'Montserrat',
+        'transport'     => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'digitalnomad_heading_font_family', array(
+        'label'   => 'Pick Heading Font Family',
+        'description'   =>  esc_attr__('Default : Montserrat', 'digitalnomad' ),
+        'section' => 'digitalnomad_font_settings',
+        'type'    => 'select',
+        'choices' => $font_choices,
+        'priority' => 4,
+    ));
+
+
+    $wp_customize->add_setting( 'digitalnomad_headings_font_color', 
+        array(
+            'default' => '#5a5a5a', 
+            'transport' => 'refresh', 
+            'sanitize_callback' => 'sanitize_hex_color', 
+        ) );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'digitalnomad_headings_font_color', 
+        array(
+            'label'      => esc_attr__( 'Pick Heading Font Color', 'digitalnomad' ),
+            'section'    => 'digitalnomad_font_settings',
+            'priority'   => 5,
+        ) ) );
 		
 		
     

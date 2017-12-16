@@ -25,8 +25,8 @@ get_header(); ?>
 <!--body content-->
 <div id="page-body"> 
     <div class="container">
-        <div class="row wow fadeInUp">       
-            <div class="col-md-8  col-sm-12 page-block"   >
+        <div class="row wow fadeInUp"> 
+            <div class="col-md-8  col-sm-12 page-block <?php echo get_theme_mod( 'digitalnomad_sidebar_setting' );?>"   >
                 <?php
                     if(have_posts()):
                         while ( have_posts() ) : the_post();
@@ -34,7 +34,10 @@ get_header(); ?>
                 <p><?php the_content();?></p>       
                 <?php endwhile;endif;?>   
             </div>
-               <aside class="col-md-4 col-sm-4" >
+              <?php 
+               $class= get_theme_mod( 'digitalnomad_sidebar_setting' );
+               ?>
+               <aside class="<?php if($class !== 'col-md-8 pull-right'): ?>col-md-4 col-sm-4 pull-right<?php else :?>col-md-4 col-sm-4 pull-left<?php endif; ?>">
                 <?php get_sidebar(); ?>
             </aside>  
         </div>

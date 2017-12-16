@@ -262,3 +262,9 @@ if ( ! function_exists( 'digitalnomad_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+/**to change the position of price **/
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_price', 10 );
+add_action( 'woocommerce_single_product_summary','woocommerce_template_single_price', 22 );
+/** to change the position of rating **/
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_rating', 10 );
+add_action( 'woocommerce_single_product_summary','woocommerce_template_single_rating', 21 );

@@ -2724,12 +2724,16 @@ embed, iframe, object {
 }
 #article-slider .article-slider-caption a {
 	font-size: 14px;
-	color: #2196f3;
+	color: #fff;
 	font-weight: 700;
 	text-transform: uppercase;
-	text-decoration: underline;
+	text-decoration: none;
 	margin-top: 25px;
 	display: block;
+}
+#article-slider .article-slider-caption a.slider-read{
+   color: #2196f3;
+   text-decoration:underline;
 }
 #article-slider .owl-controls {
 	position: absolute;
@@ -4388,4 +4392,14 @@ aside {
 .search-block form {
 	position: static !important;
 }
+}
+#article-slider .article-slider-caption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    z-index: 99;
+    padding: 80px 95px;
 }
