@@ -193,6 +193,16 @@ if ( ! function_exists( 'digitalnomad_entry_footer' ) ) :
 	}
 endif;
 
+function customizer_library_get_default( $setting ) {
+
+	$customizer_library = Customizer_Library::Instance();
+	$options = $customizer_library->get_options();
+
+	if ( isset( $options[$setting]['default'] ) ) {
+		return $options[$setting]['default'];
+	}
+
+}
 
 if ( ! function_exists( 'digitalnomad_featured_slider' ) ) :
 /**
@@ -200,7 +210,7 @@ if ( ! function_exists( 'digitalnomad_featured_slider' ) ) :
  */
 function digitalnomad_featured_slider() {
         $firstClass = 'active'; 
-        $count = get_theme_mod( 'digitalnomad_slider_number' );
+        $count = get_theme_mod( 'digitalnomad_slider_number','3' );
        $slidecat =get_option( 'digitalnomad_slide_categories' );
 
         $query = new WP_Query( array( 'cat' =>$slidecat,'posts_per_page' =>$count ) );

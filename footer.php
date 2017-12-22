@@ -23,13 +23,15 @@
 				} 
                  else 
                 {
-                    $img='<img src="'.$logo_img_static.'" >';
+                  ?><div class="footer-site-content">
+        <p><?php echo bloginfo( 'name' ); ?></p></div><?php
                 }
 			?>
 			<!--website details-->
-			<div class="footer-site-content"> <?php echo $img; ?>
-				<p><?php echo bloginfo( 'name' ); ?></p>
-			</div>
+			<?php if ( has_custom_logo() ){ ?> <div class="footer-site-content">
+				 <?php echo $img; ?>
+				<p><?php echo bloginfo( 'name' ); ?></p> 
+			</div><?php } ?>
 			<!--Page nav-->
 			<div class="col-md-12 page-nav">
 				<ul>  

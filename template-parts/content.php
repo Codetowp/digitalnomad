@@ -17,7 +17,7 @@
 				}
 				else
 				{   ?>
-					<img src="<?php echo get_template_directory_uri(); ?>/img/05-screenshot.jpg">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/05-screenshot.jpg">
 					<?php 
 				}   ?>
         </div>            

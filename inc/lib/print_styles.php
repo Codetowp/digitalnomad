@@ -14,26 +14,26 @@ add_action( 'wp_head', 'text_color_styles' );
 
 
 
-if (!function_exists('numero_paragraph_font'))  {
-	function numero_paragraph_font(){
+if (!function_exists('digitalnomad_paragraph_font'))  {
+	function digitalnomad_paragraph_font(){
 		echo '<style type="text/css" >';
-		$fontfamily_value = get_theme_mod('numero_paragraph_font', '');
+		$fontfamily_value = get_theme_mod('digitalnomad_paragraph_font', '');
 		$append_family = sprintf( 'font-family: %s;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) {
-			echo "\n" . '#home-banner p{' . $append_family . '}' ."\n". '#about-us-block p{'.$append_family.'}' ."\n". '#our-work-block p{'.$append_family.'}' ."\n". '#our-services p{' .$append_family.'}' ."\n". '#from-blog  .entry-header p{'.$append_family.'}' ."\n". '#free-trial-block p{'.$append_family.'}' ;
+			echo "\n" . '#home-banner p{' .esc_html($append_family) . '}' ."\n". '#about-us-block p{'.esc_html($append_family).'}' ."\n". '#our-work-block p{'.esc_html($append_family).'}' ."\n". '#our-services p{' .esc_html($append_family).'}' ."\n". '#from-blog  .entry-header p{'.esc_html($append_family).'}' ."\n". '#free-trial-block p{'.esc_html($append_family).'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'numero_paragraph_font' );
+add_action( 'wp_head', 'digitalnomad_paragraph_font' );
 
 
-if (!function_exists('numero_paragraph_font_size'))  {
-	function numero_paragraph_font_size(){
+if (!function_exists('digitalnomad_paragraph_font_size'))  {
+	function digitalnomad_paragraph_font_size(){
 		echo '<style type="text/css" >';
-		$fontparagfamily_value = get_theme_mod('numero_paragraph_font_size', '');
+		$fontparagfamily_value = get_theme_mod('digitalnomad_paragraph_font_size', '');
 		$append_para_family_font = sprintf( 'font-size: %spx !important;',  $fontparagfamily_value );
 			// Output the styles.
 		if ( $fontparagfamily_value ) {
@@ -43,44 +43,44 @@ if (!function_exists('numero_paragraph_font_size'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'numero_paragraph_font_size' );
+add_action( 'wp_head', 'digitalnomad_paragraph_font_size' );
 
-if (!function_exists('numero_paragraph_font_color'))  {
-	function numero_paragraph_font_color(){
+if (!function_exists('digitalnomad_paragraph_font_color'))  {
+	function digitalnomad_paragraph_font_color(){
 		echo '<style type="text/css" >';
-		$color_value = get_theme_mod('numero_paragraph_font_color', '');
+		$color_value = get_theme_mod('digitalnomad_paragraph_font_color', '');
 		$append_color = sprintf( 'color: %s !important;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" . 'p{' . $append_color . '}' ;
+			echo "\n" . 'p{' . esc_html($append_color) . '}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'numero_paragraph_font_color' );
+add_action( 'wp_head', 'digitalnomad_paragraph_font_color' );
 
 
-if (!function_exists('numero_heading_font_family'))  {
-	function numero_heading_font_family(){
+if (!function_exists('digitalnomad_heading_font_family'))  {
+	function digitalnomad_heading_font_family(){
 		echo '<style type="text/css">';
-		$fontfamily_value = get_theme_mod('numero_heading_font_family', '');
-		$append_family = sprintf( 'font-family: %s;',  $fontfamily_value );
+		$fontfamily_value = get_theme_mod('digitalnomad_heading_font_family','');
+		$append_family = sprintf( 'font-family: %s !important;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) {
-			echo "\n" . 'h1,h2,h3,h4,h5,h6{'.$append_family.'}' ;
+			echo "\n" . 'h1, h2, h3, h4, h5, h6{'.esc_html( $append_family ).'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'numero_heading_font_family' );
+add_action( 'wp_head', 'digitalnomad_heading_font_family' );
 
 
-if (!function_exists('numero_headings_font_color'))  {
-	function numero_headings_font_color(){
+if (!function_exists('digitalnomad_headings_font_color'))  {
+	function digitalnomad_headings_font_color(){
 		echo '<style type="text/css" id="rijo-css">';
-		$color_value = get_theme_mod('numero_headings_font_color', '');
+		$color_value = get_theme_mod('digitalnomad_headings_font_color', '');
 		$append_color = sprintf( 'color: %s;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
@@ -91,11 +91,11 @@ if (!function_exists('numero_headings_font_color'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'numero_headings_font_color' );
+add_action( 'wp_head', 'digitalnomad_headings_font_color' );
 
 
-if (!function_exists('numero_accent_color'))  {
-	function numero_accent_color(){
+if (!function_exists('digitalnomad_accent_color'))  {
+	function digitalnomad_accent_color(){
 		echo '<style type="text/css" id="rijo-css">';
 		$color_value = get_theme_mod('numero_accent_color', '');
         $opacity_value= get_theme_mod('numero_accent_opacity');
@@ -116,13 +116,13 @@ if (!function_exists('numero_accent_color'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'numero_accent_color' );
+add_action( 'wp_head', 'digitalnomad_accent_color' );
 
 
-if (!function_exists('dblogger_secondary_color'))  {
-	function dblogger_secondary_color(){
+if (!function_exists('digitalnomad_secondary_color'))  {
+	function digitalnomad_secondary_color(){
 		echo '<style type="text/css" id="rijo-css">';
-		$color_value = get_theme_mod('dblogger_secondary_color', '');
+		$color_value = get_theme_mod('digitalnomad_secondary_color', '');
         $append_bckcolor = sprintf( 'background-color: %s !important;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
@@ -132,5 +132,5 @@ if (!function_exists('dblogger_secondary_color'))  {
 	}
 }
  // Add custom styles to `<head>`.
-add_action( 'wp_head', 'dblogger_secondary_color' );
+add_action( 'wp_head', 'digitalnomad_secondary_color' );
 

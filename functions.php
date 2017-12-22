@@ -126,7 +126,9 @@ add_action( 'widgets_init', 'digitalnomad_widgets_init' );
 //recent post widget
 require get_template_directory() . '/inc/widget/recentpost.php';
 require get_template_directory() . '/inc/lib/related-post.php';
-
+require get_template_directory() . '/inc/lib/print_styles.php';
+require get_template_directory() . '/inc/styles.php';
+require get_template_directory() . '/inc/customizer-library.php';
 
 
 
@@ -139,12 +141,12 @@ $site_layout = array('side-pull-left' => esc_html__('Right Sidebar', 'digitalnom
  */
 function digitalnomad_styles() 
 {
-    wp_enqueue_style( 'digitalnomad-bootstrap',get_template_directory_uri().'/css/bootstrap.css');
-    wp_enqueue_style( 'digitalnomad-font-awesome',get_template_directory_uri().'/css/font-awesome.css');
-    wp_enqueue_style( 'digitalnomad-owl-carousel',get_template_directory_uri().'/css/owl.carousel.css');
-    wp_enqueue_style( 'digitalnomad-owl-theme',get_template_directory_uri().'/css/owl.theme.css');
-    wp_enqueue_style( 'digitalnomad-animate',get_template_directory_uri().'/css/animate.css');
-    wp_enqueue_style( 'digitalnomad-stylesheet',get_template_directory_uri().'/css/lity.css');
+    wp_enqueue_style( 'digitalnomad-bootstrap',get_template_directory_uri().'/assets/css/bootstrap.css');
+    wp_enqueue_style( 'digitalnomad-font-awesome',get_template_directory_uri().'/assets/css/font-awesome.css');
+    wp_enqueue_style( 'digitalnomad-owl-carousel',get_template_directory_uri().'/assets/css/owl.carousel.css');
+    wp_enqueue_style( 'digitalnomad-owl-theme',get_template_directory_uri().'/assets/css/owl.theme.css');
+    wp_enqueue_style( 'digitalnomad-animate',get_template_directory_uri().'/assets/css/animate.css');
+    wp_enqueue_style( 'digitalnomad-stylesheet',get_template_directory_uri().'/assets/css/lity.css');
     wp_enqueue_style( 'digitalnomad-googleapis', 'https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Open+Sans:300,400,600,700,800|Lato:300,400|Crimson+Text:400,400i,600');
     
         
@@ -155,25 +157,25 @@ function digitalnomad_scripts() {
 
     wp_enqueue_script( 'jquery' ); 
 
-    wp_enqueue_script( 'digitalnomad-bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.js', array(), '20151215', true );
 
-    wp_enqueue_script( 'digitalnomad-SmoothScroll', get_template_directory_uri() . '/js/SmoothScroll.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-SmoothScroll', get_template_directory_uri() . '/assets/js/SmoothScroll.js', array(), '20151215', true );
 
-    wp_enqueue_script( 'digitalnomad-lity', get_template_directory_uri() . '/js/lity.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-lity', get_template_directory_uri() . '/assets/js/lity.js', array(), '20151215', true );
 
-    wp_enqueue_script( 'digitalnomad-jquery-isotope', get_template_directory_uri() . '/js/jquery.isotope.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-jquery-isotope', get_template_directory_uri() . '/assets/js/jquery.isotope.js', array(), '20151215', true );
 
-    wp_enqueue_script( 'digitalnomad-owl-carousel', get_template_directory_uri() . '/js/owl.carousel.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.js', array(), '20151215', true );
 
-    wp_enqueue_script( 'digitalnomad-main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-main', get_template_directory_uri() . '/assets/js/main.js', array(), '20151215', true );
 
-    wp_enqueue_script( 'digitalnomad-wow-min', get_template_directory_uri() . '/js/wow.min.js', array(), '20151215', true );
+    wp_enqueue_script( 'digitalnomad-wow-min', get_template_directory_uri() . '/assets/js/wow.min.js', array(), '20151215', true );
 
 	wp_enqueue_style( 'digitalnomad-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'digitalnomad-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'digitalnomad-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'digitalnomad-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'digitalnomad-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -228,3 +230,75 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+class jpen_Example_Widget extends WP_Widget {
+
+
+  // Set up the widget name and description.
+  public function __construct() {
+    $widget_options = array( 'classname' => 'example_widget', 'description' => 'This is an Example Widget' );
+    parent::__construct( 'example_widget', 'Example Widget', $widget_options );
+  }
+
+
+  // Create the widget output.
+  public function widget( $args, $instance ) {
+    $title = apply_filters( 'widget_title', $instance[ 'title' ] );
+    $blog_title = get_bloginfo( 'name' );
+    $tagline = get_bloginfo( 'description' );
+
+    echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title']; ?>
+     <section class="widget ">
+          <div class="user-info"> <img src="https://placeimg.com/640/480/nature" class="banner"> <span><?php
+$user = wp_get_current_user();
+ 
+if ( $user ) :
+    ?>
+    <img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" />
+<?php endif; ?>
+            <h5><?php the_author(); ?></h5>
+            <p>Digital Nomad</p>
+            </span> </div>
+        </section>
+    <?php echo $args['after_widget'];
+  }
+
+  
+  // Create the admin area widget settings form.
+  public function form( $instance ) {
+    $title = ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
+    <p>
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
+      <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
+    </p><?php
+  }
+
+
+  // Apply settings to the widget instance.
+  public function update( $new_instance, $old_instance ) {
+    $instance = $old_instance;
+    $instance[ 'title' ] = strip_tags( $new_instance[ 'title' ] );
+    return $instance;
+  }
+
+}
+
+// Register the widget.
+function jpen_register_example_widget() { 
+  register_widget( 'jpen_Example_Widget' );
+}
+add_action( 'widgets_init', 'jpen_register_example_widget' );
+
+function demo_fonts() {
+	// Font options
+	$fonts = array(
+		get_theme_mod( 'digitalnomad_paragraph_font', customizer_library_get_default( 'primary-font' ) ),
+		get_theme_mod( 'digitalnomad_heading_font_family', customizer_library_get_default( 'secondary-font' ) ),
+	);
+
+	$font_uri = customizer_library_get_google_font_uri( $fonts );
+
+	// Load Google Fonts
+	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
+
+}
+add_action( 'wp_enqueue_scripts', 'demo_fonts' );
