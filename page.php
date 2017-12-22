@@ -34,7 +34,17 @@ get_header(); ?>
                 <p>
 					<?php the_content();?>
 				</p>               
-                <?php endwhile;endif;?>      
+                <?php endwhile;endif;?>
+                <div class="entry-content">
+        <?php
+        
+
+            wp_link_pages( array(
+                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
+                'after'  => '</div>',
+            ) );
+        ?>
+    </div>      
             </div>
             <div class="clearfix"></div>
         </div>

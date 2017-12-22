@@ -15,6 +15,16 @@ get_header(); ?>
 	?> 
   	<?php get_template_part( 'template-parts/content', 'single' ); ?>	
 	<?php endwhile;endif;?>
+	<div class="entry-content">
+		<?php
+		
+
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'grit' ),
+				'after'  => '</div>',
+			) );
+		?>
+	</div>
 	 <?php if ( get_edit_post_link() ) : ?>
           <footer class="entry-footer">
             <?php

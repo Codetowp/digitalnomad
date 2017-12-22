@@ -17,11 +17,11 @@ add_action( 'wp_head', 'text_color_styles' );
 if (!function_exists('digitalnomad_paragraph_font'))  {
 	function digitalnomad_paragraph_font(){
 		echo '<style type="text/css" >';
-		$fontfamily_value = get_theme_mod('digitalnomad_paragraph_font', '');
-		$append_family = sprintf( 'font-family: %s;',  $fontfamily_value );
+		$fontfamily_value = get_theme_mod('digitalnomad_paragraph_font','PT Serif');
+		$append_family = sprintf( 'font-family: %s !important;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) {
-			echo "\n" . '#home-banner p{' .esc_html($append_family) . '}' ."\n". '#about-us-block p{'.esc_html($append_family).'}' ."\n". '#our-work-block p{'.esc_html($append_family).'}' ."\n". '#our-services p{' .esc_html($append_family).'}' ."\n". '#from-blog  .entry-header p{'.esc_html($append_family).'}' ."\n". '#free-trial-block p{'.esc_html($append_family).'}' ;
+			echo "\n" . '#home-banner p{' .esc_html($append_family) . '}' ."\n". '#about-us-block p{'.esc_html($append_family).'}' ."\n". '#our-work-block p{'.esc_html($append_family).'}' ."\n". '#our-services p{' .esc_html($append_family).'}' ."\n". '#from-blog  .entry-header p{'.esc_html($append_family).'}' ."\n". '#free-trial-block p{'.esc_html($append_family).'}' ."\n". 'p{'.esc_html($append_family).'}'."\n". 'aside ul li a{'.esc_html($append_family).'}' ."\n". ' #home-banner span{'.esc_html($append_family).'}'."\n". '.btn-white{'.esc_html($append_family).'}'."\n". '.widget_recent_comments ul li span{'.esc_html($append_family).'}'."\n". '#top-menu.navbar-default .navbar-brand{'.esc_html($append_family).'}'."\n". '#top-menu.navbar-default .navbar-brand span{'.esc_html($append_family).'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -64,7 +64,7 @@ add_action( 'wp_head', 'digitalnomad_paragraph_font_color' );
 if (!function_exists('digitalnomad_heading_font_family'))  {
 	function digitalnomad_heading_font_family(){
 		echo '<style type="text/css">';
-		$fontfamily_value = get_theme_mod('digitalnomad_heading_font_family','');
+		$fontfamily_value = get_theme_mod('digitalnomad_heading_font_family','Montserrat');
 		$append_family = sprintf( 'font-family: %s !important;',  $fontfamily_value );
 			// Output the styles.
 		if ( $fontfamily_value ) {
