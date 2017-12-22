@@ -3197,7 +3197,7 @@ blockquote:after {
 	opacity: 0.5;
 }
 blockquote:before {
-	background: url(img/bq-bg.png) 0 0 no-repeat;
+	background: url(assets/img/bq-bg.png) 0 0 no-repeat;
 	content: "";
 	display: inline-block;
 	width: 75px;

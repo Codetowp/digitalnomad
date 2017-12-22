@@ -15,6 +15,28 @@ get_header(); ?>
 	?> 
   	<?php get_template_part( 'template-parts/content', 'single' ); ?>	
 	<?php endwhile;endif;?>
+	 <?php if ( get_edit_post_link() ) : ?>
+          <footer class="entry-footer">
+            <?php
+            edit_post_link(
+              sprintf(
+                wp_kses(
+                  /* translators: %s: Name of current post. Only visible to screen readers */
+                  __( 'Edit <span class="screen-reader-text">%s</span>', 'digitalnomad' ),
+                  array(
+                    'span' => array(
+                      'class' => array(),
+                    ),
+                  )
+                ),
+                get_the_title()
+              ),
+              '<span class="edit-link">',
+              '</span>'
+            );
+            ?>
+          </footer><!-- .entry-footer -->
+        <?php endif; ?>  
 	<div class="clearfix"></div>
 	<div class="publisher-info">
 		<?php echo get_avatar( get_the_author_meta('user_email'), '100', '' ); ?>

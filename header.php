@@ -47,11 +47,13 @@
 					} 
 					else 
 					{
-						$img='<img src="'.$logo_img_static.'" >';
+						?><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?><span><?php echo esc_html(GET_OPTION('blogdescription')); ?></span></a><?php
 					}
 				?>
 				<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">    
-					<?php echo $img; ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo esc_html(GET_OPTION('blogdescription')); ?></span>
+					<?php if ( has_custom_logo() ) { ?>
+					<?php echo ($img); ?><?php echo bloginfo( 'name' ); ?>  <span><?php echo esc_html(GET_OPTION('blogdescription')); ?></span><?php } ?>
+	
 				</a> 
 			</div>
 			<!--search icon-->

@@ -13,9 +13,7 @@
  */
 get_header(); ?>
 <?php
-    $background_img   = esc_url( get_theme_mod( 'header_background_image' ) );   
-    $background_img_static   = get_template_directory_uri()."/img/bg-1.jpg";
-    $image = $background_img ? "$background_img" : "$background_img_static";   
+    $background_img   = esc_url( get_theme_mod( 'header_background_image',get_template_directory_uri().'/assets/img/bg-1.jpg' ) );      
     $disable    = get_theme_mod( 'digitalnomad_disable' ) == 1 ? true : false ;
         if ( digitalnomad_is_selective_refresh() ) 
         {
@@ -25,7 +23,7 @@ get_header(); ?>
 ?>
 <!--Home banner-->
 
-<section id="home-banner" style="background-image: url(<?php echo esc_html($image);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
+<section id="home-banner" style="background-image: url(<?php echo esc_html($background_img);?>);" class="<?php echo get_theme_mod( 'digitalnomad_banner_setting', esc_html( 'half-height' ) ); ?>">
     <div class="content">
         <div class="container wow fdeInUp"  data-wow-duration="1s">
             <div class="row">
@@ -72,7 +70,7 @@ get_header(); ?>
     <div class="container">
         <div class="row"> 
             <!--content body-->
-            <div class="col-md-8 content-layout-set <?php echo get_theme_mod( 'digitalnomad_sidebar_setting' );?>">
+            <div class="col-md-8 content-layout-set <?php echo get_theme_mod( 'digitalnomad_sidebar_setting','default');?>">
                 <?php  
                     get_theme_mod( 'digitalnomad_slider_disable' );
                     $disable    = get_theme_mod( 'digitalnomad_slider_disable' ) == 1 ? true : false ;
@@ -93,8 +91,9 @@ get_header(); ?>
                 <?php endif;?>
                 <!--blog section-->
                 <?php 
+                    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 					$count_blog = get_theme_mod( 'digitalnomad_blog_section_count', esc_html__('3','digitalnomad') );
-					$query_post = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>$count_blog ) );
+					$query_post = new WP_Query( array( 'post_type' => 'post','post__not_in' => get_option( 'sticky_posts' ), 'posts_per_page' =>$count_blog,'paged'          => $paged ) );
 
            if ($query_post->have_posts()) : while ($query_post->have_posts()) : $query_post->the_post();
 						$home_layouts = get_theme_mod('digitalnomad_home_layouts');
@@ -125,7 +124,7 @@ get_header(); ?>
           <!--/content body--> 
           <!--aside-->
           <?php 
-           $class= get_theme_mod( 'digitalnomad_sidebar_setting' );
+           $class= get_theme_mod( 'digitalnomad_sidebar_setting','right-sidebar');
            ?>
           <aside class="<?php if($class !== 'col-md-8 pull-right'): ?>col-md-4 col-sm-4 aside-layout-set pull-right <?php else : ?>col-md-4 col-sm-4 aside-layout-set pull-left <?php endif; ?>" >
             <?php get_sidebar();?>
