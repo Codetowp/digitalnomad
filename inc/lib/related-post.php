@@ -3,7 +3,7 @@
 function digitalnomad_related_post() {
 
 	$args = '';
-    $count = get_theme_mod( 'digitalnomad_related_post_number' );
+    $count = get_theme_mod( 'digitalnomad_related_post_number','3' );
       
 	$args = wp_parse_args( $args, array(
 		'category__in'   => wp_get_post_categories( get_the_ID() ),
@@ -23,7 +23,7 @@ function digitalnomad_related_post() {
                 
                 if  ( get_the_post_thumbnail()=='')
                 {
-                    $background_img_relatedpost   = get_template_directory_uri()."/img/04-screenshot.jpg";
+                    $background_img_relatedpost   = get_template_directory_uri()."/assets/img/04-screenshot.jpg";
                     
                     $post_thumbnail= '<img src="'.$background_img_relatedpost.'" class="img-responsive">';
                 }
@@ -42,7 +42,8 @@ function digitalnomad_related_post() {
                 global $post;
                 $categories = get_the_category(' / ');
                 
-                
+                 ?>
+                <a  href="<?php the_permalink() ?>"><?php
 				printf(                   
 					'<article class="col-md-4 col-sm-6 col-xs-12">
                         <header class="entry-header"> %s<a href="%s">
@@ -54,7 +55,7 @@ function digitalnomad_related_post() {
                     $title,$categories,
                     $class_format
 				);
-				?>
+				?></a>
 			<?php
 			}
 			?>

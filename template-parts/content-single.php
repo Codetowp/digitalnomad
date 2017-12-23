@@ -1,5 +1,4 @@
-
-  <header class="entry-header-bottom" style=" <?php if ( has_post_thumbnail() ) { ?>background-image: url(<?php echo the_post_thumbnail_url('digitalnomad_full_banner'); ?>); <?php } ?>">
+  <header class="entry-header-bottom" style="background-image: url(<?php echo the_post_thumbnail_url('digitalnomad_full_banner'); ?>);">
         <div class="content  wow fadeInUp">
             <div class="container "> 
                 <div class="head-tag"><?php digitalnomad_entry_category(); ?></div>
