@@ -7,7 +7,7 @@ Description: Blog theme ! Simple !
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: digitalnomad
+Text Domain: Digital_Nomad
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
@@ -156,6 +156,17 @@ p a:hover {
 	color: #3a405b;
 	letter-spacing: .5px;
 	margin: 12px 0 32px;
+}
+.single .single-post p img {
+    overflow: hidden;
+    object-fit: cover;
+    margin-bottom: 72px;
+}
+
+.single img, .page img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 /* 	2.2 Navigation */
 
@@ -3403,6 +3414,9 @@ blockquote strong {
 	font-size: 16px;
 	margin: 10px 0;
 }
+.sticky {
+	display: block;
+}
 /* page*/
 
 .page #page-body p {
@@ -4148,6 +4162,7 @@ post-type-archive-product.woocommerce ul.products li.product:hover .add_to_cart_
 }
 .footer-site-content img {
 	position: relative;
+	display: inline-block;
 }
 .footer-site-content:before {
 	width: 0;

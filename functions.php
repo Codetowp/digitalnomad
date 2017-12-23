@@ -42,6 +42,11 @@ if ( ! function_exists( 'digitalnomad_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		/**
+		 * This theme styles the visual editor to resemble the theme style,
+		 * specifically font, colors, and column width.
+		 */
+		add_editor_style( 'assets/css/editor-style.css', 'digitalnomad' );
 
 	// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -146,6 +151,7 @@ function digitalnomad_styles()
     wp_enqueue_style( 'digitalnomad-owl-theme',get_template_directory_uri().'/assets/css/owl.theme.css');
     wp_enqueue_style( 'digitalnomad-animate',get_template_directory_uri().'/assets/css/animate.css');
     wp_enqueue_style( 'digitalnomad-stylesheet',get_template_directory_uri().'/assets/css/lity.css');
+  
     wp_enqueue_style( 'digitalnomad-googleapis', 'https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Open+Sans:300,400,600,700,800|Lato:300,400|Crimson+Text:400,400i,600');
     
         
@@ -175,6 +181,7 @@ function digitalnomad_scripts() {
 	wp_enqueue_script( 'digitalnomad-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'digitalnomad-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -245,3 +252,5 @@ function demo_fonts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'demo_fonts' );
+require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
+require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';

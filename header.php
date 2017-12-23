@@ -10,7 +10,7 @@
  */
 ?>
 <!doctype html>
-<html>
+<html <?php language_attributes(); ?>>
 <head>
 <!-- Basic Page Needs
     ================================================== -->
