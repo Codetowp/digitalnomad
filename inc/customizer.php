@@ -254,6 +254,7 @@ function digitalnomad_customize_register( $wp_customize ) {
 
   $wp_customize->add_setting('digitalnomad_related_post_number',
     array(
+      'default' => '3',
         'sanitize_callback' => 'digitalnomad_sanitize_integer'
     )
 );
@@ -261,7 +262,6 @@ function digitalnomad_customize_register( $wp_customize ) {
   $wp_customize->add_control('digitalnomad_related_post_number',
     array(
         'type' => 'integer',
-        'default' => 3,
         'label' => __('Number Of related post To Show - i.e 10 (default is 3)','digitalnomad'),
         'section' => 'digitalnomad_page_setting',
 
@@ -282,6 +282,7 @@ function digitalnomad_customize_register( $wp_customize ) {
   foreach( $social_sites as $social_site ) 
   {
      $wp_customize->add_setting( "social[$social_site]", array(
+        'default'             =>'#',
         'type'              	=> 'theme_mod',
         'capability'        	=> 'edit_theme_options',
         'sanitize_callback' 	=> 'esc_url_raw'
