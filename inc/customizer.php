@@ -19,14 +19,10 @@ function digitalnomad_customize_register( $wp_customize ) {
 
     $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
  
-    $wp_customize->register_control_type( 'Epsilon_Control_Tab' );
-    $wp_customize->register_control_type( 'Epsilon_Control_Button' );
-     require_once get_template_directory() . '/inc/lib/class-epsilon-control-button.php';
-    require_once get_template_directory() . '/inc/lib/class-illdy-cf7-custom-control.php';
-    require_once get_template_directory() . '/inc/lib/class-illdy-text-custom-control.php';
+    
     require get_template_directory() . '/inc/lib/fo-to-range.php';
     require get_template_directory() . '/inc/lib/theme-info.php';
- require_once get_template_directory() . '/inc/lib/class-epsilon-control-tab.php';
+ 
 
     if ( isset( $wp_customize->selective_refresh ) ) {
       $wp_customize->selective_refresh->add_partial( 'blogname', array(
@@ -59,163 +55,7 @@ $wp_customize->add_panel( 'digitalnomad_general_panel' ,array(
     'title'                 => esc_html__( 'General settings', 'digitalnomad' ),
     'description'           => '',
 ) );
-$panel_id = 'digitalnomad_general_panel';
-
-// Set prefix
-$prefix = 'digitalnomad';
-
-/***********************************************/
-/********************* ABOUT  ******************/
-/***********************************************/
-$wp_customize->add_section( $panel_id, array(
-  'priority'          => 59,
-  'capability'        => 'edit_theme_options',
-  'title'             => __( 'About Section', 'illdy' ),
-  'description'       => __( 'Control various options for about section from front page.', 'illdy' ),
-  'panel'             => 'digitalnomad_general_panel',
-) );
-
-/***********************************************/
-/******************* General *******************/
-/***********************************************/
-
-
-
-$wp_customize->add_setting( $prefix . '_about_tab', array(
-  'transport'         => 'postMessage',
-  'sanitize_callback' => 'wp_kses_post',
-) );
-$wp_customize->add_control( new Epsilon_Control_Tab( $wp_customize, $prefix . '_about_tab', array(
-  'type'      => 'epsilon-tab',
-  'section'   => $panel_id,
-  'buttons'   => array(
-    array(
-      'name' => __( 'Header', 'illdy' ),
-      'fields'    => array(
-        $prefix . '_about_title_color',
-        'digitalnomad_header_text',
-        'digitalnomad_header_tag_line',
-        'digitalnomad_header_button_text',
-        'digitalnomad_header_button_url',
-        
-      ),
-      'active' => true,
-    ),
-    array(
-      'name' => __( 'Backgrounds', 'illdy' ),
-      'fields'    => array(
-       'header_background_image',
-        $prefix . '_about_background_size',
-        $prefix . '_about_background_repeat',
-        $prefix . '_about_background_attachment',
-        $prefix . '_about_background_position',
-      ),
-    ),
-  ),
-) ) );
-
-// Background Image
-/*$wp_customize->add_setting( $prefix . '_about_general_image', array(
-  'sanitize_callback' => 'esc_url',
-  'default'           => '',
-  'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_about_general_image', array(
-  'label'    => __( 'Background Image', 'illdy' ),
-  'section'  => $panel_id,
-  'settings' => $prefix . '_about_general_image',
-) ) );*/
-$wp_customize->add_setting( $prefix . '_about_background_position_x', array(
-  'default'        => 'center',
-  'sanitize_callback' => 'esc_html',
-  'transport'         => 'postMessage',
-) );
-$wp_customize->add_setting( $prefix . '_about_background_position_y', array(
-  'default'        => 'center',
-  'sanitize_callback' => 'esc_html',
-  'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( new WP_Customize_Background_Position_Control( $wp_customize, $prefix . '_about_background_position', array(
-  'label'    => __( 'Background Position', 'illdy' ),
-  'section'  => $panel_id,
-  'settings' => array(
-    'x' => $prefix . '_about_background_position_x',
-    'y' => $prefix . '_about_background_position_y',
-  ),
-) ) );
-$wp_customize->add_setting( $prefix . '_about_background_size', array(
-  'default' => 'cover',
-  'sanitize_callback' => 'illdy_sanitize_background_size',
-  'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( $prefix . '_about_background_size', array(
-  'label'      => __( 'Image Size', 'illdy' ),
-  'section'    => $panel_id,
-  'type'       => 'select',
-  'choices'    => array(
-    'auto'    => __( 'Original', 'illdy' ),
-    'contain' => __( 'Fit to Screen', 'illdy' ),
-    'cover'   => __( 'Fill Screen', 'illdy' ),
-  ),
-) );
-
-$wp_customize->add_setting( $prefix . '_about_background_repeat', array(
-  'sanitize_callback' => $prefix . '_sanitize_checkbox',
-  'default'           => 0,
-  'transport'         => 'postMessage',
-) );
-
-$wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, $prefix . '_about_background_repeat', array(
-  'type'        => 'epsilon-toggle',
-  'label'       => __( 'Repeat Background Image', 'illdy' ),
-  'section'     => $panel_id,
-) ) );
-
-$wp_customize->add_setting( $prefix . '_about_background_attachment', array(
-  'sanitize_callback' => $prefix . '_sanitize_checkbox',
-  'default'           => 0,
-  'transport'         => 'postMessage',
-) );
-
-$wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, $prefix . '_about_background_attachment', array(
-  'type'        => 'epsilon-toggle',
-  'label'       => __( 'Scroll with Page', 'illdy' ),
-  'section'     => $panel_id,
-) ) );
-
-/*$wp_customize->add_setting( $prefix . '_about_general_color', array(
-  'sanitize_callback' => 'sanitize_hex_color',
-  'default'           => '#fff',
-  'transport'         => 'postMessage',
-
-) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_about_general_color', array(
-  'label'    => __( 'Background Color', 'illdy' ),
-  'section'  => $panel_id,
-  'settings' => $prefix . '_about_general_color',
-) ) );*/
-
-$wp_customize->add_setting( $prefix . '_about_title_color', array(
-  'sanitize_callback' => 'sanitize_hex_color',
-  'default'           => '#545454',
-  'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_about_title_color', array(
-  'label'    => __( 'Title Color', 'illdy' ),
-  'section'  => $panel_id,
-  'settings' => $prefix . '_about_title_color',
-) ) );
-
-/*$wp_customize->add_setting( $prefix . '_about_descriptions_color', array(
-  'sanitize_callback' => 'sanitize_hex_color',
-  'default'           => '#8c9597',
-  'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_about_descriptions_color', array(
-  'label'    => __( 'Description Color', 'illdy' ),
-  'section'  => $panel_id,
-  'settings' => $prefix . '_about_descriptions_color',
-) ) );*/
+ $panel_id='digitalnomad_general_panel';
 
   /********* header intro **********/
 

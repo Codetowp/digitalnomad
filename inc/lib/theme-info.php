@@ -2,14 +2,14 @@
 /**
  * Class to display upsells.
  *
- * @package dblogger
+ * @package digitalnomad
  */
 if ( ! class_exists( 'WP_Customize_Control' ) ) {
 	return;
 }
 
 /**
- * Class dblogger_info
+ * Class digitalnomad_info
  */
 class dblogger_info extends WP_Customize_Control {
 
@@ -38,19 +38,19 @@ class dblogger_info extends WP_Customize_Control {
 	public function render_content() {
 		$links = array(
 			array(
-				'name' => __( 'Documentation','dblogger' ),
+				'name' => __( 'Documentation','digitalnomad' ),
 				'link' => esc_url( '#' ),
 			),
 			array(
-				'name' => __( 'Demo','dblogger' ),
+				'name' => __( 'Demo','digitalnomad' ),
 				'link' => esc_url( '#' ),
 			),
 			array(
-				'name' => __( 'Leave a review','dblogger' ),
+				'name' => __( 'Leave a review','digitalnomad' ),
 				'link' => esc_url( '#' ),
 			),
 			array(
-				'name' => __( 'Buy us a coffee','dblogger' ),
+				'name' => __( 'Buy us a coffee','digitalnomad' ),
 				'link' => esc_url( '#' ),
 			),
 		); ?>

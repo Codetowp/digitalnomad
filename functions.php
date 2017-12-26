@@ -252,5 +252,3 @@ function demo_fonts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'demo_fonts' );
-require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
-require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
