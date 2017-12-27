@@ -5,7 +5,7 @@ if (!function_exists('text_color_styles'))  {
 		$color_value = get_theme_mod('header_textcolor', '');
 		$append_color = sprintf( 'color: %s;',  $color_value );
 		if ( $color_value ) {
-			echo "\n" . '#top-header a , .openmenu-nav{' . $append_color . '}';
+			echo "\n" . '#top-header a , .openmenu-nav{' . esc_html($append_color) . '}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -37,7 +37,7 @@ if (!function_exists('digitalnomad_paragraph_font_size'))  {
 		$append_para_family_font = sprintf( 'font-size: %spx !important;',  $fontparagfamily_value );
 			// Output the styles.
 		if ( $fontparagfamily_value ) {
-			echo "\n" . 'p{' . $append_para_family_font . '}';
+			echo "\n" . 'p{' .esc_html ($append_para_family_font) . '}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -84,8 +84,8 @@ if (!function_exists('digitalnomad_headings_font_color'))  {
 		$append_color = sprintf( 'color: %s;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" . 'h1{' . $append_color . '}'."\n".'h2{'.$append_color.'}'."\n".'h3{'.$append_color.'}'.
-                "\n".'h4{'.$append_color.'}'."\n".'h5{'.$append_color.'}'."\n".'#about-us-block h2{'.$append_color.'}'."\n".'#our-work-block h2{'.$append_color.'}' ;
+			echo "\n" . 'h1{' .esc_html ($append_color) . '}'."\n".'h2{'.esc_html($append_color).'}'."\n".'h3{'.esc_html($append_color).'}'.
+                "\n".'h4{'.esc_html($append_color).'}'."\n".'h5{'.esc_html($append_color).'}'."\n".'#about-us-block h2{'.esc_html($append_color).'}'."\n".'#our-work-block h2{'.esc_html($append_color).'}' ;
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -110,7 +110,7 @@ if (!function_exists('digitalnomad_accent_color'))  {
 
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" .'#home-banner a.btn-info{'.$append_color.'}'."\n" .'#about-us-block .col-about-us i{'.$icon_color.'}'."\n" .'#why-choose-us .section-title:after{'.$choose_color.'}'."\n" .'#why-choose-us .section-title{'.$choose_color.'}'."\n" .'#our-work-block .works figcaption{'.$opacity_color.'}'."\n".'#our-work-block .works figure:hover figcaption, #our-work-block .works figure:focus figcaption{'.$opacity.'}'."\n" .'.services-block i{'.$choose_color.'}'."\n" .'#clients-block{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$choose_color.'}'."\n" .'#free-trial-block a{'.$append_border.'}';
+			echo "\n" .'#home-banner a.btn-info{'.esc_html($append_color).'}'."\n" .'#about-us-block .col-about-us i{'.esc_html($icon_color).'}'."\n" .'#why-choose-us .section-title:after{'.esc_html($choose_color).'}'."\n" .'#why-choose-us .section-title{'.esc_html($choose_color).'}'."\n" .'#our-work-block .works figcaption{'.esc_html($opacity_color).'}'."\n".'#our-work-block .works figure:hover figcaption, #our-work-block .works figure:focus figcaption{'.esc_html($opacity).'}'."\n" .'.services-block i{'.esc_html($choose_color).'}'."\n" .'#clients-block{'.esc_html($choose_color).'}'."\n" .'#free-trial-block a{'.esc_html($choose_color).'}'."\n" .'#free-trial-block a{'.esc_html($append_border).'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
@@ -126,7 +126,7 @@ if (!function_exists('digitalnomad_secondary_color'))  {
         $append_bckcolor = sprintf( 'background-color: %s !important;',  $color_value );
 			// Output the styles.
 		if ( $color_value ) {
-			echo "\n" .'.on{'.$append_bckcolor.'}'."\n".'.theme-post-caption .view-payment{'.$append_bckcolor.'}'."\n".'.widget_categories ul{'.$append_bckcolor.'}';
+			echo "\n" .'.on{'.esc_html($append_bckcolor).'}'."\n".'.theme-post-caption .view-payment{'.esc_html($append_bckcolor).'}'."\n".'.widget_categories ul{'.esc_html($append_bckcolor).'}';
 		}
 		echo "\n". "</style>". "\n";
 	}
