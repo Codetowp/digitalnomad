@@ -11,18 +11,20 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function digitalnomad_customize_register( $wp_customize ) {
-  
+
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
   $wp_customize->get_setting( 'background_image' )->transport  = 'postMessage';
 
   $wp_customize->get_section('title_tagline')->title = esc_html( 'Branding' ); 
-  
+
   $wp_customize->register_control_type( 'Epsilon_Control_Tab' );
   $wp_customize->register_control_type( 'Epsilon_Control_Button' );
+
+
   require_once get_template_directory() . '/inc/lib/class-epsilon-control-button.php';
-  
+
   require get_template_directory() . '/inc/lib/fo-to-range.php';
   require get_template_directory() . '/inc/lib/theme-info.php';
   require_once get_template_directory() . '/inc/lib/class-epsilon-control-tab.php';
@@ -52,9 +54,13 @@ function digitalnomad_customize_register( $wp_customize ) {
 
 
   }
+
+
+
 //*************************** GENERAL SETTINGS PANEL ***************************//
   $wp_customize->add_panel( 'digitalnomad_general_panel' ,array(
     'priority'              => 100,
+    'type'                  =>'option',
     'title'                 => esc_html__( 'General settings', 'digitalnomad' ),
     'description'           => '',
   ) );
@@ -87,7 +93,7 @@ function digitalnomad_customize_register( $wp_customize ) {
           'digitalnomad_header_tag_line',
           'digitalnomad_header_button_text',
           'digitalnomad_header_button_url',
-          
+
         ),
         'active' => true,
       ),
@@ -95,83 +101,9 @@ function digitalnomad_customize_register( $wp_customize ) {
         'name' => __( 'Backgrounds', 'digitalnomad' ),
         'fields'    => array(
          'header_background_image',
-         $prefix . '_about_background_size',
-         $prefix . '_about_background_repeat',
-         $prefix . '_about_background_attachment',
-         $prefix . '_about_background_position',
        ),
       ),
     ),
-  ) ) );
-
-  $wp_customize->add_setting( $prefix . '_about_background_position_x', array(
-    'default'        => 'center',
-    'sanitize_callback' => 'esc_html',
-    'transport'         => 'postMessage',
-  ) );
-  $wp_customize->add_setting( $prefix . '_about_background_position_y', array(
-    'default'        => 'center',
-    'sanitize_callback' => 'esc_html',
-    'transport'         => 'postMessage',
-  ) );
-  $wp_customize->add_control( new WP_Customize_Background_Position_Control( $wp_customize, $prefix . '_about_background_position', array(
-    'label'    => __( 'Background Position', 'digitalnomad' ),
-    'section'  => $panel_id,
-    'settings' => array(
-      'x' => $prefix . '_about_background_position_x',
-      'y' => $prefix . '_about_background_position_y',
-    ),
-  ) ) );
-  $wp_customize->add_setting( $prefix . '_about_background_size', array(
-    'default' => 'cover',
-    'sanitize_callback' => 'illdy_sanitize_background_size',
-    'transport'         => 'postMessage',
-  ) );
-  $wp_customize->add_control( $prefix . '_about_background_size', array(
-    'label'      => __( 'Image Size', 'digitalnomad' ),
-    'section'    => $panel_id,
-    'type'       => 'select',
-    'choices'    => array(
-      'auto'    => __( 'Original', 'digitalnomad' ),
-      'contain' => __( 'Fit to Screen', 'digitalnomad' ),
-      'cover'   => __( 'Fill Screen', 'digitalnomad' ),
-    ),
-  ) );
-
-  $wp_customize->add_setting( $prefix . '_about_background_repeat', array(
-    'sanitize_callback' => $prefix . '_sanitize_checkbox',
-    'default'           => 0,
-    'transport'         => 'postMessage',
-  ) );
-
-  $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, $prefix . '_about_background_repeat', array(
-    'type'        => 'epsilon-toggle',
-    'label'       => __( 'Repeat Background Image', 'digitalnomad' ),
-    'section'     => $panel_id,
-  ) ) );
-
-  $wp_customize->add_setting( $prefix . '_about_background_attachment', array(
-    'sanitize_callback' => $prefix . '_sanitize_checkbox',
-    'default'           => 0,
-    'transport'         => 'postMessage',
-  ) );
-
-  $wp_customize->add_control( new Customizer_Toggle_Control( $wp_customize, $prefix . '_about_background_attachment', array(
-    'type'        => 'epsilon-toggle',
-    'label'       => __( 'Scroll with Page', 'digitalnomad' ),
-    'section'     => $panel_id,
-  ) ) );
-
-
-  $wp_customize->add_setting( $prefix . '_about_title_color', array(
-    'sanitize_callback' => 'sanitize_hex_color',
-    'default'           => '#545454',
-    'transport'         => 'postMessage',
-  ) );
-  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_about_title_color', array(
-    'label'    => __( 'Title Color', 'digitalnomad' ),
-    'section'  => $panel_id,
-    'settings' => $prefix . '_about_title_color',
   ) ) );
 
    // Header INTRO
@@ -231,7 +163,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     'type'						=> 'text',
     'label' 					=> __( 'Header', 'digitalnomad' ),
     'section'  					=> $panel_id,
-    
+
   ) );
 
 
@@ -245,7 +177,7 @@ function digitalnomad_customize_register( $wp_customize ) {
     'type'						=> 'text',
     'label' 					=> __( 'Tag line', 'digitalnomad' ),
     'section'  					=> $panel_id,
-    
+
   ) );
 
 
@@ -607,9 +539,9 @@ function digitalnomad_customize_partial_header_tag_line() {
 
 function digitalnomad_sanitize_choices( $input, $setting ) {
   global $wp_customize;
-  
+
   $control = $wp_customize->get_control( $setting->id );
-  
+
   if ( array_key_exists( $input, $control->choices ) ) {
     return $input;
   } else {
