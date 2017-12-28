@@ -21,7 +21,7 @@ class Digitalnomad_Premium extends WP_Widget{
 			function Digitalnomad_Premium_widget_scripts()
 			{
 				wp_enqueue_media();
-				wp_enqueue_script( 'Digitalnomad_Premium_widget_scripts', get_template_directory_uri() . '/js/widget.js', false, '1.0', true );
+				wp_enqueue_script( 'Digitalnomad_Premium_widget_scripts', get_template_directory_uri() . '/assets/js/widget.js', false, '1.0', true );
 			}
 			add_action('admin_enqueue_scripts', 'Digitalnomad_Premium_widget_scripts');
         }

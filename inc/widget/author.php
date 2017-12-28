@@ -1,11 +1,11 @@
 <?php
-class jpen_Example_Widget extends WP_Widget {
+class author_Widget extends WP_Widget {
 
 
   // Set up the widget name and description.
   public function __construct() {
-    $widget_options = array( 'classname' => 'example_widget', 'description' => 'This is an Example Widget' );
-    parent::__construct( 'example_widget', 'Example Widget', $widget_options );
+    $widget_options = array( 'classname' => 'author_Widget', 'description' => 'This is an Example Widget' );
+    parent::__construct( 'author_Widget', 'Example Widget', $widget_options );
   }
 
 
@@ -52,7 +52,7 @@ if ( $user ) :
 }
 
 // Register the widget.
-function jpen_register_example_widget() { 
-  register_widget( 'jpen_Example_Widget' );
+function digitalnomad_widgets_init() { 
+  register_widget( 'author_Widget' );
 }
-add_action( 'widgets_init', 'jpen_register_example_widget' );
+add_action( 'widgets_init', 'digitalnomad_widgets_init' );

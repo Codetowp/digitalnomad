@@ -24,7 +24,7 @@
                  else 
                 {
                   ?><div class="footer-site-content">
-        <p><?php echo bloginfo( 'name' ); ?></p></div><?php
+        <p class="logo-foot"><?php echo bloginfo( 'name' ); ?></p></div><?php
                 }
 			?>
 			<!--website details-->
