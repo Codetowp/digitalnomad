@@ -126,9 +126,13 @@ function digitalnomad_widgets_init() {
         'after_title'   => '</h2>',
     ) );
     require get_template_directory() . '/inc/widget/social.php';  
+
 }
 add_action( 'widgets_init', 'digitalnomad_widgets_init' );
+ require get_template_directory() . '/inc/widget/Author-widget.php'; 
+
 //recent post widget
+
 require get_template_directory() . '/inc/widget/recentpost.php';
 require get_template_directory() . '/inc/lib/related-post.php';
 require get_template_directory() . '/inc/lib/print_styles.php';
