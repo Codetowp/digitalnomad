@@ -129,7 +129,7 @@ function digitalnomad_widgets_init() {
 
 }
 add_action( 'widgets_init', 'digitalnomad_widgets_init' );
- require get_template_directory() . '/inc/widget/Author-widget.php'; 
+
 
 //recent post widget
 
