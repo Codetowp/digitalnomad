@@ -113,7 +113,7 @@ public function __construct() {
       <input type="text" name="<?php echo $this->get_field_name('title'); ?>" id="<?php echo $this->get_field_id('title'); ?>" value="<?php echo $title; ?>" class="widefat" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link', 'burstfly'); ?></label><br />
+      <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('background url', 'burstfly'); ?></label><br />
       <input type="text" name="<?php echo $this->get_field_name('link'); ?>" id="<?php echo $this->get_field_id('link'); ?>" value="<?php echo $link; ?>" class="widefat" />
     </p>
     <p>
