@@ -1,6 +1,6 @@
 // JavaScript Document
 jQuery(document).ready( function(){
-    console.log('hii');
+    
  function media_upload( button_class) {
     var _custom_media = true,
     _orig_send_attachment = wp.media.editor.send.attachment;
@@ -15,7 +15,7 @@ jQuery(document).ready( function(){
         _custom_media = true;
         wp.media.editor.send.attachment = function(props, attachment){
             if ( _custom_media  ) {
-                console.log('hii');
+               
                jQuery('.custom_media_id').val(attachment.id); 
                jQuery('.custom_media_url').val(attachment.url);
                //jQuery('.custom_media_image').attr('src',attachment.url).css('display','block');   
