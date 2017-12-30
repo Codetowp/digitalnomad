@@ -6,6 +6,7 @@ jQuery(document).ready( function(){
     _orig_send_attachment = wp.media.editor.send.attachment;
     jQuery('body').on('click',button_class, function(e) {
         var button_id ='#'+jQuery(this).attr('id');
+        console.log(button_id);
         /* console.log(button_id); */
         var self = jQuery(button_id);
         var send_attachment_bkp = wp.media.editor.send.attachment;

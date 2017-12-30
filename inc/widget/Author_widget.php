@@ -126,7 +126,7 @@ public function __construct() {
         <input type="text" class="widefat custom_media_url" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>" value="<?php echo $image_uri; ?>">
        </p>
        <p>
-        <input type="button" value="<?php _e( 'Upload Image', 'iuw' ); ?>" class="button custom_media_upload" id="custom_image_uploader"/>
+        <input type="button" value="<?php _e( 'Upload Image', 'burstfly' ); ?>" class="button custom_media_upload" id="custom_image_uploader"/>
     </p>
 		<?php 
 	}
