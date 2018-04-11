@@ -30,7 +30,7 @@ get_header(); ?>
                 <div class="col-md-6 col-md-offset-3"> 
                     <!--Head content-->
                     <?php 
-                        $nomad_tagline  = get_theme_mod( 'digitalnomad_header_tag_line', esc_html__(' HEY I’M RIJO ABRAHAM', 'digitalnomad' ));
+                        $nomad_tagline  = get_theme_mod( 'digitalnomad_header_tag_line', esc_html__('A FREELANCE', 'digitalnomad' ));
                         if ($nomad_tagline != '') echo '<span>  ' . wp_kses_post($nomad_tagline) . ' </span>'; 
                     ?>
                     <?php 
